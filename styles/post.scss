@@ -17,13 +17,13 @@
     }
 
     pre {
-        @apply mt-14 mb-8 rounded-b-md rounded-tr-md px-5 py-7;
+        @apply mt-14 mb-8 rounded-md px-5 py-7;
 
         background-color: #282e34;
 
         div {
             &.filename {
-                @apply absolute -mt-10 -ml-4 rounded-t-md px-4 pt-0.5 font-sans;
+                @apply absolute -mt-10 -ml-4 rounded-t-md border-2 border-b-2 border-[#282e34] px-4 pt-0.5 font-sans;
                 background-color: #24292e;
                 color: #79b8ff;
             }
@@ -34,7 +34,7 @@
         }
     }
 
-    code {
+    p code {
         @apply rounded-sm bg-zinc-100 px-2 py-0.5 text-zinc-900;
     }
 

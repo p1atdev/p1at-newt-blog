@@ -4,11 +4,14 @@ interface Props {
 }
 
 const Tag = ({ name, color }: Props) => {
-    // const bgColor = `bg-[${color}]`
-
     return (
         <div>
-            <span className={`mr-1 rounded-full bg-blue-100 px-2.5 py-0.5 text-gray-600`}>{name}</span>
+            <span
+                className={`mr-1 rounded-full px-2.5 py-0.5 text-zinc-900 text-opacity-60`}
+                style={{ backgroundColor: color }}
+            >
+                {name}
+            </span>
         </div>
     )
 }
