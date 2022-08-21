@@ -1,6 +1,7 @@
 import { JSDOM } from "jsdom"
 import { rehype } from "rehype"
 import rehypePrism from "rehype-prism-plus"
+import { createLinkCard } from "./linkCard"
 
 const headingTags = ["h1", "h2", "h3", "h4", "h5", "h6"]
 
@@ -14,6 +15,8 @@ export const reformHTML = async (html: string) => {
     await highlight(dom)
 
     await codeFilename(dom)
+
+    await linkCard(dom)
 
     return dom.window.document.querySelector("body")!.innerHTML
 }
@@ -61,4 +64,20 @@ const codeFilename = async (dom: JSDOM) => {
             pre.insertAdjacentHTML("afterbegin", `<div class="filename">${filename}</div>`)
         }
     })
+}
+
+const linkCard = async (dom: JSDOM) => {
+    await Promise.all(
+        Array.from(dom.window.document.querySelectorAll("p")).map(async (p) => {
+            const text = p.innerHTML
+            // p.outerHTML = "outerText"
+
+            if (text.match(/^http[s]*?:\/\/[^\s]+\.[^\s]+$/)) {
+                // console.log(text)
+                const card = await createLinkCard(text)
+
+                p.outerHTML = card
+            }
+        })
+    )
 }

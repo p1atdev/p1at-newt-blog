@@ -17,7 +17,7 @@
     }
 
     pre {
-        @apply mt-14 mb-8 rounded-md px-5 py-7;
+        @apply mt-14 mb-8 overflow-auto rounded-md px-5 py-7;
 
         background-color: #282e34;
 
@@ -34,11 +34,12 @@
         }
     }
 
-    p code {
-        @apply rounded-sm bg-zinc-100 px-2 py-0.5 text-zinc-900;
-    }
-
-    a {
-        @apply text-blue-400 hover:underline;
+    p {
+        a {
+            @apply text-blue-400 hover:underline;
+        }
+        code {
+            @apply rounded-sm bg-zinc-100 px-2 py-0.5 text-zinc-900;
+        }
     }
 }

@@ -1,0 +1,17 @@
+a.link-card {
+    @apply my-10 -mx-4 flex gap-x-2 rounded border py-4 px-6 hover:shadow-sm;
+
+    p {
+        @apply my-1;
+        &.title {
+            @apply text-lg font-semibold;
+        }
+        &.url {
+            @apply text-gray-500;
+        }
+    }
+
+    img {
+        @apply my-auto ml-auto max-h-20;
+    }
+}

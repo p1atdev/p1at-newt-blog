@@ -39,8 +39,6 @@ export const getStaticProps = async (ctx: GetStaticPropsContext) => {
 
         post.body = html
 
-        console.log(html)
-
         return {
             props: {
                 post: post,
