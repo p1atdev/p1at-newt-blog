@@ -55,7 +55,7 @@ interface Props {
 
 export const getStaticProps = async (ctx: GetStaticPropsContext) => {
     try {
-        const posts = await getPosts()
+        const posts = await getPosts(0, 5)
 
         return {
             props: {
@@ -107,7 +107,7 @@ const Index = ({ posts }: Props) => {
                     </NextLink>
                 </div>
             </div>
-            <PostList posts={posts} />
+            <PostList posts={posts.items} />
         </div>
     )
 }

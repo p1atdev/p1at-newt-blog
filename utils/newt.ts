@@ -42,10 +42,10 @@ export const getPosts = async (page: number = 0, limit: number = 5): Promise<Pos
         const posts: Posts = await client.getContents({
             appUid: secrets.NEWT_APP_UID,
             modelUid: NEWT_POST_MODEL_UID,
-            query: {
-                limit: limit,
-                skip: page * limit,
-            },
+            // query: {
+            //     limit: limit,
+            //     skip: page * limit,
+            // },
         })
 
         return posts

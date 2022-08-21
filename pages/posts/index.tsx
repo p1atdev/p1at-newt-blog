@@ -1,11 +1,10 @@
-import { GetStaticPropsContext } from "next"
+import { GetStaticPropsContext, NextPageContext } from "next"
 import NextLink from "next/link"
 import { Posts } from "../../types/posts"
 import { getPosts } from "../../utils/newt"
-import TagList from "../../components/TagList"
-import CreatedAt from "../../components/date/CreatedAt"
-import UpdatedAt from "../../components/date/UpdatedAt"
 import PostList from "../../components/PostList"
+import { useRouter } from "next/router"
+import { useEffect, useState } from "react"
 
 interface Props {
     posts?: Posts
@@ -27,6 +26,16 @@ export const getStaticProps = async (ctx: GetStaticPropsContext) => {
 }
 
 const Page = ({ posts }: Props) => {
+    const router = useRouter()
+    const [page, setPage] = useState<number>(1)
+    const limit = 10
+
+    useEffect(() => {
+        if (router.isReady) {
+            setPage(parseInt(router.query.page as string) || 1)
+        }
+    }, [router])
+
     if (posts === undefined) {
         return <div>No posts found</div>
     }
@@ -34,7 +43,11 @@ const Page = ({ posts }: Props) => {
     return (
         <div className="mx-auto max-w-lg px-4 md:max-w-xl xl:max-w-2xl">
             <p className="py-8 text-3xl font-bold">記事一覧</p>
-            <PostList posts={posts} />
+            <PostList posts={posts.items.slice((page - 1) * limit, page * limit)} />
+            {/* TODO: ここのページングを作る */}
+            <div className="mt-8">
+                <p>ページ: {page}</p>
+            </div>
         </div>
     )
 }
