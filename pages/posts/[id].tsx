@@ -5,6 +5,7 @@ import TagList from "../../components/TagList"
 import CreatedAt from "../../components/date/CreatedAt"
 import UpdatedAt from "../../components/date/UpdatedAt"
 import NavBar from "../../components/NavBar"
+import style from "../../styles/post.module.scss"
 
 interface Props {
     post: Post
@@ -24,8 +25,6 @@ export const getStaticProps = async (ctx: GetStaticPropsContext) => {
 
     try {
         const post = await getPost(contentId)
-
-        console.log(post)
 
         return {
             props: {
@@ -92,7 +91,7 @@ const Page = ({ post }: Props) => {
                 <TagList tags={post.tags} />
             </div>
 
-            <div dangerouslySetInnerHTML={{ __html: post.body }}></div>
+            <div dangerouslySetInnerHTML={{ __html: post.body }} className={style.markdown}></div>
         </div>
     )
 }
