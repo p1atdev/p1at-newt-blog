@@ -1,0 +1,36 @@
+.markdown {
+    @apply relative pb-8;
+
+    h1 {
+        @apply mt-6 mb-4 border-b border-gray-200 pb-1 text-3xl font-bold;
+    }
+    h2 {
+        @apply mt-5 mb-3 text-3xl font-semibold;
+    }
+
+    h3 {
+        @apply mt-4 mb-3 text-2xl font-semibold;
+    }
+
+    p {
+        @apply my-6;
+    }
+
+    pre {
+        @apply my-6 overflow-scroll rounded-md bg-gray-800 px-5 py-7;
+
+        div {
+            &.filename {
+                @apply absolute -mt-8 -ml-6 rounded-tl-md  bg-gray-200 px-2;
+            }
+        }
+
+        code {
+            @apply text-white;
+        }
+    }
+
+    a {
+        @apply text-blue-400 hover:underline;
+    }
+}

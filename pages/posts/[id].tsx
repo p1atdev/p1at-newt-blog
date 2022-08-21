@@ -5,7 +5,7 @@ import TagList from "../../components/TagList"
 import CreatedAt from "../../components/date/CreatedAt"
 import UpdatedAt from "../../components/date/UpdatedAt"
 import NavBar from "../../components/NavBar"
-import style from "../../styles/post.module.scss"
+import { reformHTML } from "../../utils/markdown"
 
 interface Props {
     post: Post
@@ -25,6 +25,21 @@ export const getStaticProps = async (ctx: GetStaticPropsContext) => {
 
     try {
         const post = await getPost(contentId)
+
+        if (post === undefined) {
+            return {
+                props: {},
+                redirect: {
+                    destination: "/404",
+                },
+            }
+        }
+
+        const html = await reformHTML(post.body)
+
+        post.body = html
+
+        console.log(html)
 
         return {
             props: {
@@ -91,7 +106,7 @@ const Page = ({ post }: Props) => {
                 <TagList tags={post.tags} />
             </div>
 
-            <div dangerouslySetInnerHTML={{ __html: post.body }} className={style.markdown}></div>
+            <div dangerouslySetInnerHTML={{ __html: post.body }} className="markdown"></div>
         </div>
     )
 }
