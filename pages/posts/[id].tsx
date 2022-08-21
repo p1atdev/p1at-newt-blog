@@ -1,8 +1,10 @@
 import { GetStaticPathsResult, GetStaticPropsContext } from "next"
 import { Post } from "../../types/post"
-import { createClient } from "newt-client-js"
 import { getPost, getPosts } from "../../utils/newt"
-// import {} from "../../types/post"
+import { format } from "date-fns"
+import { ja } from "date-fns/locale"
+import { Icon } from "@iconify/react"
+import Tags from "../../components/Tags"
 
 interface Props {
     post: Post
@@ -78,8 +80,21 @@ export const getStaticPaths = async (): Promise<GetStaticPathsResult> => {
 const Page = ({ post }: Props) => {
     return (
         <div className="mx-auto xl:max-w-2xl">
-            <p className="mt-8 text-6xl">{post.emoji.value}</p>
-            <h1 className="mt-6 text-3xl font-bold">{post.title}</h1>
+            <div className="mb-8">
+                <p className="mt-8 text-6xl">{post.emoji.value}</p>
+                <h1 className="mt-6 text-3xl font-bold">{post.title}</h1>
+                <div className=" flex gap-x-3 text-gray-400">
+                    <div className="flex items-center gap-x-1">
+                        <Icon icon="akar-icons:newspaper" />
+                        <p>{format(new Date(post._sys.createdAt), "yyyy/MM/dd", { locale: ja })}</p>
+                    </div>
+                    <div className="flex items-center gap-x-1">
+                        <Icon icon="carbon:update-now" />
+                        <p>{format(new Date(post._sys.updatedAt), "yyyy/MM/dd", { locale: ja })}</p>
+                    </div>
+                </div>
+                <Tags tags={post.tags} />
+            </div>
 
             <div dangerouslySetInnerHTML={{ __html: post.body }}></div>
         </div>

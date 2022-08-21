@@ -9,15 +9,15 @@ export interface Post {
 
 export interface Sys {
     raw: Raw
-    createdAt: Date
-    updatedAt: Date
+    createdAt: string
+    updatedAt: string
 }
 
 export interface Raw {
-    createdAt: Date
-    updatedAt: Date
-    firstPublishedAt: Date
-    publishedAt: Date
+    createdAt: string
+    updatedAt: string
+    firstPublishedAt: string
+    publishedAt: string
 }
 
 export interface Emoji {

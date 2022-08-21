@@ -3,6 +3,7 @@ import Tag from "../../components/Tag"
 import NextLink from "next/link"
 import { Posts } from "../../types/posts"
 import { getPosts } from "../../utils/newt"
+import Tags from "../../components/Tags"
 
 interface Props {
     posts?: Posts
@@ -41,11 +42,7 @@ const Page = ({ posts }: Props) => {
                                 </div>
                                 <div className="">
                                     <p className="text-xl font-medium">{post.title}</p>
-                                    <div className="flex pt-2 text-sm">
-                                        {post.tags.map((tag) => {
-                                            return <Tag key={tag._id} name={tag.name} color={tag.color} />
-                                        })}
-                                    </div>
+                                    <Tags tags={post.tags} />
                                 </div>
                             </div>
                         </NextLink>
