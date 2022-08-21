@@ -2,14 +2,14 @@
     @apply relative pb-8;
 
     h1 {
-        @apply mt-6 mb-4 border-b border-gray-200 pb-1 text-3xl font-bold;
+        @apply mt-8 mb-4 border-b border-gray-200 pb-1 text-3xl font-bold;
     }
     h2 {
-        @apply mt-5 mb-3 text-3xl font-semibold;
+        @apply mt-6 mb-3 text-3xl font-semibold;
     }
 
     h3 {
-        @apply mt-4 mb-3 text-2xl font-semibold;
+        @apply mt-5 mb-3 text-2xl font-semibold;
     }
 
     p {
@@ -32,6 +32,10 @@
         code {
             @apply text-white;
         }
+    }
+
+    code {
+        @apply rounded-sm bg-zinc-100 px-2 py-0.5 text-zinc-900;
     }
 
     a {
