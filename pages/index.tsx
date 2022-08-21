@@ -5,6 +5,7 @@ import Image from "next/image"
 import PostList from "../components/PostList"
 import { Posts } from "../types/posts"
 import { getPosts } from "../utils/newt"
+import NavBar from "../components/NavBar"
 
 interface ExternalLinkProps {
     href: string
@@ -24,7 +25,7 @@ const ExternalLink = ({ href, icon, alt }: ExternalLinkProps) => {
                     className="mx-auto object-contain p-2 opacity-30 brightness-0 grayscale hover:opacity-40"
                 />
             </a>
-            <div className="absolute hidden rounded-sm bg-slate-100 px-4 py-2 group-hover:block">
+            <div className="absolute hidden rounded-sm bg-slate-100 px-4 py-1 group-hover:block">
                 <p>{alt}</p>
             </div>
         </div>
@@ -78,7 +79,8 @@ const Index = ({ posts }: Props) => {
 
     return (
         <div className="mx-auto px-4 sm:max-w-lg md:max-w-xl xl:max-w-2xl">
-            <div className="mt-20">
+            <NavBar />
+            <div className="mt-12">
                 <div className="flex justify-center ">
                     <div className="m-auto aspect-square rounded-full bg-blue-100 p-1.5 text-[0px] tracking-normal">
                         <Image
@@ -98,7 +100,7 @@ const Index = ({ posts }: Props) => {
                     })}
                 </div>
             </div>
-            <hr className="my-8" />
+            <hr className="my-9" />
             <div className="mb-1">
                 <h2 className=" text-2xl font-semibold">最新記事</h2>
                 <div className="flex justify-end">

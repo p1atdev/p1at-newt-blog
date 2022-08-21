@@ -5,6 +5,7 @@ import { getPosts } from "../../utils/newt"
 import PostList from "../../components/PostList"
 import { useRouter } from "next/router"
 import { useEffect, useState } from "react"
+import NavBar from "../../components/NavBar"
 
 interface Props {
     posts?: Posts
@@ -42,6 +43,7 @@ const Page = ({ posts }: Props) => {
 
     return (
         <div className="mx-auto max-w-lg px-4 md:max-w-xl xl:max-w-2xl">
+            <NavBar />
             <p className="py-8 text-3xl font-bold">記事一覧</p>
             <PostList posts={posts.items.slice((page - 1) * limit, page * limit)} />
             {/* TODO: ここのページングを作る */}

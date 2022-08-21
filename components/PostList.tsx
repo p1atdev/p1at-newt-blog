@@ -45,7 +45,9 @@ const PostList = ({ posts }: Props) => {
             {posts.map((post) => {
                 return (
                     <NextLink key={post._id} href={`/posts/${post._id}`}>
-                        <PostListItem post={post} />
+                        <a>
+                            <PostListItem post={post} />
+                        </a>
                     </NextLink>
                 )
             })}

@@ -4,6 +4,7 @@ import { getPost, getPosts } from "../../utils/newt"
 import TagList from "../../components/TagList"
 import CreatedAt from "../../components/date/CreatedAt"
 import UpdatedAt from "../../components/date/UpdatedAt"
+import NavBar from "../../components/NavBar"
 
 interface Props {
     post: Post
@@ -79,6 +80,8 @@ export const getStaticPaths = async (): Promise<GetStaticPathsResult> => {
 const Page = ({ post }: Props) => {
     return (
         <div className="mx-auto px-4 sm:max-w-lg md:max-w-xl xl:max-w-2xl">
+            <NavBar />
+
             <div className="mb-8">
                 <p className="mt-8 text-6xl">{post.emoji.value}</p>
                 <h1 className="mt-6 text-3xl font-bold">{post.title}</h1>
