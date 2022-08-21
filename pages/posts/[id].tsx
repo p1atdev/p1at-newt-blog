@@ -1,7 +1,7 @@
 import { GetStaticPathsResult, GetStaticPropsContext } from "next"
 import { Post } from "../../types/post"
 import { getPost, getPosts } from "../../utils/newt"
-import Tags from "../../components/Tags"
+import TagList from "../../components/TagList"
 import CreatedAt from "../../components/date/CreatedAt"
 import UpdatedAt from "../../components/date/UpdatedAt"
 
@@ -86,7 +86,7 @@ const Page = ({ post }: Props) => {
                     <CreatedAt date={post._sys.createdAt} />
                     <UpdatedAt date={post._sys.updatedAt} />
                 </div>
-                <Tags tags={post.tags} />
+                <TagList tags={post.tags} />
             </div>
 
             <div dangerouslySetInnerHTML={{ __html: post.body }}></div>

@@ -3,7 +3,7 @@ import Tag from "../../components/Tag"
 import NextLink from "next/link"
 import { Posts } from "../../types/posts"
 import { getPosts } from "../../utils/newt"
-import Tags from "../../components/Tags"
+import TagList from "../../components/TagList"
 import CreatedAt from "../../components/date/CreatedAt"
 import UpdatedAt from "../../components/date/UpdatedAt"
 
@@ -44,7 +44,7 @@ const Page = ({ posts }: Props) => {
                                 </div>
                                 <div className="w-full pr-4">
                                     <p className="text-xl font-medium">{post.title}</p>
-                                    <Tags tags={post.tags} />
+                                    <TagList tags={post.tags} />
                                     <div className="flex w-full justify-end gap-x-2">
                                         <div className="hidden sm:block">
                                             <CreatedAt date={post._sys.createdAt} />
