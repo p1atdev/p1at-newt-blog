@@ -1,4 +1,50 @@
 .markdown {
+    /**
+    * Inspired by gatsby remark prism - https://www.gatsbyjs.com/plugins/gatsby-remark-prismjs/
+    * 1. Make the element just wide enough to fit its content.
+    * 2. Always fill the visible space in .code-highlight.
+    */
+    .code-highlight {
+        float: left; /* 1 */
+        min-width: 100%; /* 2 */
+    }
+
+    .code-line {
+        display: block;
+        padding-left: 16px;
+        padding-right: 16px;
+        margin-left: -16px;
+        margin-right: -16px;
+        border-left: 4px solid rgba(0, 0, 0, 0); /* Set placeholder for highlight accent border color to transparent */
+    }
+
+    .code-line.inserted {
+        background-color: rgba(16, 185, 129, 0.2); /* Set inserted line (+) color */
+    }
+
+    .code-line.deleted {
+        background-color: rgba(239, 68, 68, 0.2); /* Set deleted line (-) color */
+    }
+
+    .highlight-line {
+        margin-left: -16px;
+        margin-right: -16px;
+        background-color: rgba(55, 65, 81, 0.5); /* Set highlight bg color */
+        border-left: 4px solid rgb(59, 130, 246); /* Set highlight accent border color */
+    }
+
+    .line-number::before {
+        display: inline-block;
+        width: 1rem;
+        text-align: right;
+        margin-right: 16px;
+        margin-left: -8px;
+        color: rgb(156, 163, 175); /* Line number color */
+        content: attr(line);
+    }
+
+    // Theme
+
     code[class*="language-"],
     pre[class*="language-"] {
         color: #e1e4e8;
@@ -25,7 +71,8 @@
     code[class*="language-"]::-moz-selection,
     code[class*="language-"] ::-moz-selection {
         text-shadow: none;
-        background: #24292e;
+        background: #17e5e633;
+        border: #17e5e600;
     }
 
     pre[class*="language-"]::selection,
@@ -33,7 +80,8 @@
     code[class*="language-"]::selection,
     code[class*="language-"] ::selection {
         text-shadow: none;
-        background: #24292e;
+        background: #17e5e633;
+        border: #17e5e600;
     }
 
     @media print {
@@ -46,7 +94,6 @@
     /* Code blocks */
     pre[class*="language-"] {
         padding: 1em;
-        margin: 0.5em 0;
         overflow: auto;
     }
 
@@ -62,20 +109,20 @@
         white-space: normal;
     }
 
+    .token {
+        color: #ffab70;
+    }
+
     .token.comment {
         color: #6a737d;
     }
 
-    .token.punctuation {
-        color: #6a737d;
-    }
-
     .token.string {
-        color: #6a737d;
+        color: #79b8ff;
     }
 
     .token.constant {
-        color: #79b8ff;
+        color: #b392f0;
     }
 
     .token.hexcode {
@@ -86,16 +133,23 @@
         color: #79b8ff;
     }
 
-    .token.variable {
-        color: #79b8ff;
-    }
-
     .token.tag {
         color: #85e89d;
     }
 
     .token.regex {
         color: #dbedff;
+        .regex-delimiter {
+            color: #dbedff;
+        }
+        .regex-source {
+            color: #dbedff;
+            // .language-regex {
+            // }
+        }
+        .regex-flags {
+            color: #f97583;
+        }
     }
 
     .token.deleted {
@@ -117,5 +171,25 @@
 
     .token.italic {
         font-style: italic;
+    }
+
+    .token.keyword {
+        color: #f97583;
+    }
+
+    .token.operator {
+        color: #f97583;
+    }
+
+    .token.variable {
+        color: #ffab70;
+    }
+
+    .token.punctuation {
+        color: #ffab70;
+    }
+
+    .token.function {
+        color: #b392f0;
     }
 }

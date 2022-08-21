@@ -1,6 +1,6 @@
 import { JSDOM } from "jsdom"
 import { rehype } from "rehype"
-import rehypeHighlight from "rehype-highlight"
+import rehypePrism from "rehype-prism-plus"
 
 const headingTags = ["h1", "h2", "h3", "h4", "h5", "h6"]
 
@@ -47,7 +47,7 @@ const highlight = async (dom: JSDOM) => {
     dom.window.document.querySelectorAll("pre").forEach(async (code) => {
         const highlighted = await rehype()
             .data("settings", { fragment: true })
-            .use(rehypeHighlight)
+            .use(rehypePrism, { showLineNumbers: true })
             .process(code.outerHTML)
 
         code.outerHTML = highlighted.toString()
