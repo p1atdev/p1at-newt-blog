@@ -24,7 +24,7 @@ const getSecrets = (): Secrets => {
     }
 }
 
-export const getPosts = async (): Promise<Posts | undefined> => {
+export const getPosts = async (page: number = 0, limit: number = 5): Promise<Posts | undefined> => {
     const secrets = getSecrets()
     const NEWT_POST_MODEL_UID = process.env.NEWT_POST_MODEL_UID!
 
@@ -42,6 +42,10 @@ export const getPosts = async (): Promise<Posts | undefined> => {
         const posts: Posts = await client.getContents({
             appUid: secrets.NEWT_APP_UID,
             modelUid: NEWT_POST_MODEL_UID,
+            query: {
+                limit: limit,
+                skip: page * limit,
+            },
         })
 
         return posts

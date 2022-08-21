@@ -1,11 +1,11 @@
-import { GetStaticPathsContext, GetStaticPathsResult, GetStaticPropsContext } from "next"
-import Tag from "../../components/Tag"
+import { GetStaticPropsContext } from "next"
 import NextLink from "next/link"
 import { Posts } from "../../types/posts"
 import { getPosts } from "../../utils/newt"
 import TagList from "../../components/TagList"
 import CreatedAt from "../../components/date/CreatedAt"
 import UpdatedAt from "../../components/date/UpdatedAt"
+import PostList from "../../components/PostList"
 
 interface Props {
     posts?: Posts
@@ -34,29 +34,7 @@ const Page = ({ posts }: Props) => {
     return (
         <div className="mx-auto max-w-lg px-4 md:max-w-xl xl:max-w-2xl">
             <p className="py-8 text-3xl font-bold">記事一覧</p>
-            <div>
-                {posts!.items.map((post) => {
-                    return (
-                        <NextLink key={post._id} href={`/posts/${post._id}`}>
-                            <div className="flex rounded-md border border-gray-100 p-2 hover:shadow-sm">
-                                <div className="mx-2 w-16 p-4">
-                                    <div className="m-auto text-3xl">{post.emoji.value}</div>
-                                </div>
-                                <div className="w-full pr-4">
-                                    <p className="text-xl font-medium">{post.title}</p>
-                                    <TagList tags={post.tags} />
-                                    <div className="flex w-full justify-end gap-x-2">
-                                        <div className="hidden sm:block">
-                                            <CreatedAt date={post._sys.createdAt} />
-                                        </div>
-                                        <UpdatedAt date={post._sys.raw.publishedAt} />
-                                    </div>
-                                </div>
-                            </div>
-                        </NextLink>
-                    )
-                })}
-            </div>
+            <PostList posts={posts} />
         </div>
     )
 }
