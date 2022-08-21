@@ -13,8 +13,8 @@ const PostListItem = ({ post }: Props) => {
             <div className="mx-2 w-16 p-4">
                 <div className="m-auto text-3xl">{post.emoji.value}</div>
             </div>
-            <div className="w-full pr-4">
-                <p className="text-xl font-medium">{post.title}</p>
+            <div className="w-full pr-4 pt-2">
+                <p className="text-xl font-semibold">{post.title}</p>
                 <TagList tags={post.tags} />
                 <div className="flex w-full justify-end gap-x-2">
                     <div className="hidden sm:block">
