@@ -41,7 +41,7 @@ const PostList = ({ posts }: Props) => {
     }
 
     return (
-        <div>
+        <div className="flex flex-col gap-y-2">
             {posts.map((post) => {
                 return (
                     <NextLink key={post._id} href={`/posts/${post._id}`}>
