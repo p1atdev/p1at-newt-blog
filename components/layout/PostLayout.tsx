@@ -1,16 +1,19 @@
 import Image from "next/image"
 import Link from "next/link"
 import { ReactNode } from "react"
-import SideNavBar from "../components/sideNavBar/SideNavBar"
-import SideNavBarDrawer from "../components/sideNavBar/SideNavBarDrawer"
-import SideNabBarToggle from "../components/sideNavBar/SideNavBarToggle"
-import { Static } from "../utils/static"
+import SideNavBar from "../sideNavBar/SideNavBar"
+import SideNavBarDrawer from "../sideNavBar/SideNavBarDrawer"
+import SideNabBarToggle from "../sideNavBar/SideNavBarToggle"
+import TOC from "../TOC"
+import { Heading } from "../../utils/markdown"
+import { Static } from "../../utils/static"
 
 interface Props {
     children: ReactNode | ReactNode[]
+    toc: Heading[]
 }
 
-const NormalLayout = ({ children }: Props) => {
+const PostLayout = ({ children, toc }: Props) => {
     return (
         <div className=" h-screen w-screen">
             <div className="flex h-full w-full flex-col divide-x md:flex-row">
@@ -43,14 +46,12 @@ const NormalLayout = ({ children }: Props) => {
                 </div>
 
                 <div className="flex grow flex-col divide-y overflow-clip md:overflow-auto lg:flex-row lg:divide-x ">
+                    {/* 記事 */}
                     <div className="grow py-10 px-6 lg:overflow-auto">{children}</div>
 
-                    {/* タグとか色々 */}
-                    <div className="grow basis-1/4 py-10 px-6 ">
-                        <p className=" text-2xl font-semibold">検索</p>
-                        <p>Coming soon...</p>
-                        <p className=" text-2xl font-semibold">タグ一覧</p>
-                        <p>Coming soon...</p>
+                    {/* 目次 */}
+                    <div className="hidden grow basis-1/4 overflow-scroll py-10 px-6 pt-36 lg:block">
+                        <TOC toc={toc} />
                     </div>
                 </div>
             </div>
@@ -58,4 +59,4 @@ const NormalLayout = ({ children }: Props) => {
     )
 }
 
-export default NormalLayout
+export default PostLayout
