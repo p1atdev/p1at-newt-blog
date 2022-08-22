@@ -7,6 +7,7 @@ import SideNabBarToggle from "../sideNavBar/SideNavBarToggle"
 import TOC from "../TOC"
 import { Heading } from "../../utils/markdown"
 import { Static } from "../../utils/static"
+import Footer from "../Footer"
 
 interface Props {
     children: ReactNode | ReactNode[]
@@ -35,6 +36,7 @@ const PostLayout = ({ children, toc }: Props) => {
                                             width={36}
                                             height={36}
                                             className="rounded-full"
+                                            alt="Plat profile icon"
                                         />
                                     </div>
                                     <p>Plat Dev</p>
@@ -47,7 +49,10 @@ const PostLayout = ({ children, toc }: Props) => {
 
                 <div className="flex grow flex-col divide-y overflow-clip md:overflow-auto lg:flex-row lg:divide-x ">
                     {/* 記事 */}
-                    <div className="grow py-10 px-6 lg:overflow-auto">{children}</div>
+                    <div className="grow py-10 px-6 lg:overflow-auto">
+                        {children}
+                        <Footer />
+                    </div>
 
                     {/* 目次 */}
                     <div className="hidden grow basis-1/4 overflow-scroll py-10 px-6 pt-36 lg:block">

@@ -5,6 +5,7 @@ import SideNavBar from "../sideNavBar/SideNavBar"
 import SideNavBarDrawer from "../sideNavBar/SideNavBarDrawer"
 import SideNabBarToggle from "../sideNavBar/SideNavBarToggle"
 import { Static } from "../../utils/static"
+import Footer from "../Footer"
 
 interface Props {
     children: ReactNode | ReactNode[]
@@ -32,6 +33,7 @@ const NormalLayout = ({ children }: Props) => {
                                             width={36}
                                             height={36}
                                             className="rounded-full"
+                                            alt="Plat profile icon"
                                         />
                                     </div>
                                     <p>Plat Dev</p>
@@ -43,7 +45,13 @@ const NormalLayout = ({ children }: Props) => {
                 </div>
 
                 <div className="flex grow flex-col divide-y overflow-clip md:overflow-auto lg:flex-row lg:divide-x ">
-                    <div className="grow py-10 px-6 lg:overflow-auto">{children}</div>
+                    <div className="grow divide-y lg:overflow-auto">
+                        <div className="py-10 px-6">{children}</div>
+
+                        <div className="hidden lg:block">
+                            <Footer />
+                        </div>
+                    </div>
 
                     {/* タグとか色々 */}
                     <div className="grow basis-1/4 py-10 px-6 ">
@@ -51,6 +59,10 @@ const NormalLayout = ({ children }: Props) => {
                         <p>Coming soon...</p>
                         <p className=" text-2xl font-semibold">タグ一覧</p>
                         <p>Coming soon...</p>
+                    </div>
+
+                    <div className="block lg:hidden">
+                        <Footer />
                     </div>
                 </div>
             </div>
