@@ -11,7 +11,7 @@ interface ExternalLinkProps {
 
 const ExternalLink = ({ href, icon, alt }: ExternalLinkProps) => {
     return (
-        <div className="group relative flex w-6 flex-col items-center">
+        <div className="group relative flex w-6 flex-col items-center justify-evenly">
             <a href={href} target="__blank" className="w-6">
                 <Image
                     src={icon}
@@ -31,17 +31,17 @@ const ExternalLink = ({ href, icon, alt }: ExternalLinkProps) => {
 const externalLinks: ExternalLinkProps[] = [
     {
         href: "https://github.com/p1atdev",
-        icon: "/icons/github.png",
+        icon: "https://api.iconify.design/akar-icons/github-fill.svg",
         alt: "GitHub",
     },
     {
         href: "https://twitter.com/p1atdev",
-        icon: "/icons/twitter.png",
+        icon: "https://api.iconify.design/akar-icons/twitter-fill.svg",
         alt: "Twitter",
     },
     {
         href: "https://zenn.dev/platina",
-        icon: "https://zenn.dev/images/logo-transparent.png",
+        icon: "https://api.iconify.design/simple-icons/zenn.svg",
         alt: "Zenn",
     },
 ]
