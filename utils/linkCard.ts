@@ -27,15 +27,13 @@ export const createLinkCard = async (url: string) => {
 
     const image = twitterImage || openGraphImage || ogp.favicon || ""
 
-    console.log(image)
-
     const card = `
     <a href="${url}" targe="__blank" class="link-card">
         <div>
             <p class="title">${ogp.title ?? "No Title"}</p>
             <p class="url">${url}</p>
         </div>
-        <img src="${ogp.favicon ?? ""}" alt="${""}">
+        <img src="${image ?? ""}" alt="${""}">
     </a>
         
         `.trim()
