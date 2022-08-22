@@ -5,51 +5,9 @@ import Image from "next/image"
 import PostList from "../components/PostList"
 import { Posts } from "../types/posts"
 import { getPosts } from "../utils/newt"
-import NavBar from "../components/NavBar"
-import SideNavBar from "../components/SideNavBar"
-
-interface ExternalLinkProps {
-    href: string
-    icon: string
-    alt: string
-}
-
-const ExternalLink = ({ href, icon, alt }: ExternalLinkProps) => {
-    return (
-        <div className="group relative w-6 items-center">
-            <a href={href} target="__blank" className="w-6">
-                <Image
-                    src={icon}
-                    width={24}
-                    height={24}
-                    alt={alt}
-                    className="mx-auto object-contain p-2 opacity-30 brightness-0 grayscale hover:opacity-40"
-                />
-            </a>
-            <div className="absolute hidden rounded-sm bg-slate-100 px-4 py-1 group-hover:block">
-                <p>{alt}</p>
-            </div>
-        </div>
-    )
-}
-
-const externalLinks: ExternalLinkProps[] = [
-    {
-        href: "https://github.com/p1atdev",
-        icon: "/icons/github.png",
-        alt: "GitHub",
-    },
-    {
-        href: "https://twitter.com/p1atdev",
-        icon: "/icons/twitter.png",
-        alt: "Twitter",
-    },
-    {
-        href: "https://zenn.dev/platina",
-        icon: "https://zenn.dev/images/logo-transparent.png",
-        alt: "Zenn",
-    },
-]
+import SideNavBar from "../components/sideNavBar/SideNavBar"
+import SideNabBarToggle from "../components/sideNavBar/SideNavBarToggle"
+import SideNavBarDrawer from "../components/sideNavBar/SideNavBarDrawer"
 
 interface Props {
     posts?: Posts
@@ -80,62 +38,53 @@ const Index = ({ posts }: Props) => {
 
     return (
         <div className=" h-screen w-screen">
-            <div className="mx-auto px-4 sm:max-w-lg md:max-w-xl lg:hidden">
-                <NavBar />
-                <div className="mt-12">
-                    <div className="flex justify-center ">
-                        <div className="m-auto aspect-square rounded-full bg-blue-100 p-1.5 text-[0px] tracking-normal">
-                            <Image
-                                src="https://avatars.githubusercontent.com/u/60182057"
-                                alt="icon"
-                                width={120}
-                                height={120}
-                                className="rounded-full "
-                            />
-                        </div>
-                    </div>
-                    <h1 className="text-center text-3xl font-bold">Plat Dev</h1>
-                    <p className="my-2 text-center text-gray-400">Newt 使ったブログ</p>
-                    <div className="flex items-center justify-center gap-x-3">
-                        {externalLinks.map((link) => {
-                            return <ExternalLink key={link.href} {...link} />
-                        })}
-                    </div>
-                </div>
-                <hr className="my-9" />
-                <div className="mb-1">
-                    <h2 className=" text-2xl font-semibold">最新記事</h2>
-                    <div className="flex justify-end">
-                        <NextLink href={"/posts"}>
-                            <a className="font-medium text-blue-400 hover:underline">全ての記事→</a>
-                        </NextLink>
-                    </div>
-                </div>
-                <PostList posts={posts.items.slice(0, 5)} />
-            </div>
-
-            <div className="hidden h-full w-full flex-row divide-x lg:flex">
+            <div className="flex h-full w-full flex-col divide-x md:flex-row">
                 {/* サイドバー */}
-                <SideNavBar />
-                {/* ホーム要素 */}
-                <div className="grow overflow-auto py-10 px-6">
-                    <div className="mb-1">
-                        <h2 className=" text-2xl font-semibold">最新記事</h2>
-                        <div className="flex justify-end">
-                            <NextLink href={"/posts"}>
-                                <a className="font-medium text-blue-400 hover:underline">全ての記事→</a>
-                            </NextLink>
-                        </div>
-                    </div>
-                    <PostList posts={posts.items.slice(0, 5)} />
+                <div className="hidden basis-1/4 md:block lg:basis-1/5">
+                    <SideNavBar />
                 </div>
 
-                {/* リンク集など */}
-                <div className="basis-1/4 py-10 px-6">
-                    <p className=" text-2xl font-semibold">検索</p>
-                    <p>Coming soon...</p>
-                    <p className=" text-2xl font-semibold">タグ一覧</p>
-                    <p>Coming soon...</p>
+                <div className="h-screen justify-end md:hidden">
+                    <div className="absolute z-50 h-screen">
+                        <SideNavBarDrawer />
+                    </div>
+                    <div className="mx-4 mt-2 flex items-center justify-between">
+                        <div className="flex items-center gap-x-2 px-2 pt-4 text-3xl font-bold">
+                            <div className="m-auto h-10 w-10 rounded-full bg-blue-100 p-0.5 text-[0px] tracking-normal">
+                                <Image
+                                    src={"https://avatars.githubusercontent.com/u/60182057"}
+                                    width={36}
+                                    height={36}
+                                    className="rounded-full"
+                                />
+                            </div>
+                            <p>Plat Dev</p>
+                        </div>
+                        <SideNabBarToggle />
+                    </div>
+                </div>
+
+                <div className="flex grow flex-col divide-y overflow-clip md:overflow-auto lg:flex-row lg:divide-x ">
+                    {/* ホーム要素 */}
+                    <div className="grow py-10 px-6 lg:overflow-auto">
+                        <div className="mb-1">
+                            <h2 className=" text-2xl font-semibold">最新記事</h2>
+                            <div className="flex justify-end">
+                                <NextLink href={"/posts"}>
+                                    <a className="font-medium text-blue-400 hover:underline">全ての記事→</a>
+                                </NextLink>
+                            </div>
+                        </div>
+                        <PostList posts={posts.items.slice(0, 5)} />
+                    </div>
+
+                    {/* リンク集など */}
+                    <div className="grow basis-1/4 py-10 px-6 ">
+                        <p className=" text-2xl font-semibold">検索</p>
+                        <p>Coming soon...</p>
+                        <p className=" text-2xl font-semibold">タグ一覧</p>
+                        <p>Coming soon...</p>
+                    </div>
                 </div>
             </div>
         </div>
