@@ -6,11 +6,7 @@ import { getPosts } from "../../utils/newt"
 import PostList from "../../components/PostList"
 import { useRouter } from "next/router"
 import { useEffect, useState } from "react"
-import NavBar from "../../components/NavBar"
-import SideNabBarToggle from "../../components/sideNavBar/SideNavBarToggle"
-import SideNavBarDrawer from "../../components/sideNavBar/SideNavBarDrawer"
-import SideNavBar from "../../components/sideNavBar/SideNavBar"
-import NormalLayout from "../../layout/NormalLayout"
+import NormalLayout from "../../components/layout/NormalLayout"
 
 interface Props {
     posts?: Posts

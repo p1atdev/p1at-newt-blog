@@ -4,7 +4,7 @@ import NextLink from "next/link"
 import PostList from "../components/PostList"
 import { Posts } from "../types/posts"
 import { getPosts } from "../utils/newt"
-import NormalLayout from "../layout/NormalLayout"
+import NormalLayout from "../components/layout/NormalLayout"
 
 interface Props {
     posts?: Posts
