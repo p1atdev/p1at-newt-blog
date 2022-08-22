@@ -1,6 +1,7 @@
 import Image from "next/image"
 import Link from "next/link"
 import { useRouter } from "next/router"
+import { Static } from "../../utils/static"
 
 interface ExternalLinkProps {
     href: string
@@ -73,15 +74,19 @@ const SideNavBar = () => {
         <div className="flex h-full flex-col justify-between py-10">
             <div>
                 <div className="flex justify-center">
-                    <div className="m-auto aspect-square rounded-full bg-blue-100 p-1.5 text-[0px] tracking-normal">
-                        <Image
-                            src="https://avatars.githubusercontent.com/u/60182057"
-                            alt="icon"
-                            width={100}
-                            height={100}
-                            className="rounded-full "
-                        />
-                    </div>
+                    <Link href="/">
+                        <a>
+                            <div className="m-auto aspect-square rounded-full bg-blue-100 p-1.5 text-[0px] tracking-normal">
+                                <Image
+                                    src={Static.ProfileURL}
+                                    alt="icon"
+                                    width={100}
+                                    height={100}
+                                    className="rounded-full "
+                                />
+                            </div>
+                        </a>
+                    </Link>
                 </div>
                 <h1 className="text-center text-3xl font-bold">Plat Dev</h1>
                 <p className="my-2 text-center text-gray-400">Newt 使ったブログ</p>
