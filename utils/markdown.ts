@@ -5,7 +5,18 @@ import { createLinkCard } from "./linkCard"
 
 const headingTags = ["h1", "h2", "h3", "h4", "h5", "h6"]
 
-export const reformHTML = async (html: string) => {
+export interface ReformResult {
+    html: string
+    toc: Heading[]
+}
+
+export interface Heading {
+    level: number
+    text: string
+    id: string
+}
+
+export const reformHTML = async (html: string): Promise<ReformResult> => {
     const dom = new JSDOM(`<body>${html}</body>`)
 
     await reformHeadings(dom)
@@ -18,16 +29,18 @@ export const reformHTML = async (html: string) => {
 
     await linkCard(dom)
 
-    return dom.window.document.querySelector("body")!.innerHTML
+    const toc = await generateTOC(dom)
+
+    const reformed = dom.window.document.querySelector("body")!.innerHTML
+
+    return { html: reformed, toc }
 }
 
 // TODO: ここをちゃんとTSXのものに入れ替えるようにする
 const reformHeadings = async (dom: JSDOM) => {
-    for (const tag of headingTags) {
-        dom.window.document.querySelectorAll(tag).forEach((heading) => {
-            heading.id = heading.innerHTML.replace(/\s/g, "-")
-        })
-    }
+    dom.window.document.querySelectorAll("h1, h2, h3, h4, h5, h6").forEach((heading) => {
+        heading.id = heading.innerHTML.replace(/\s/g, "-")
+    })
 }
 
 // コードブロックの修正をする
@@ -80,4 +93,19 @@ const linkCard = async (dom: JSDOM) => {
             }
         })
     )
+}
+
+// 目次
+const generateTOC = async (dom: JSDOM) => {
+    const toc: Heading[] = []
+
+    dom.window.document.querySelectorAll("h1, h2, h3").forEach((heading) => {
+        toc.push({
+            level: parseInt(heading.tagName.slice(1)),
+            text: heading.innerHTML,
+            id: heading.id,
+        })
+    })
+
+    return toc
 }
