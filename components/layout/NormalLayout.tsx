@@ -27,7 +27,8 @@ const NormalLayout = ({ children }: Props) => {
                             <a>
                                 <div className="flex items-center gap-x-2 px-2 pt-4 text-3xl font-bold">
                                     <div className="m-auto h-10 w-10 rounded-full bg-blue-100 p-0.5 text-[0px] tracking-normal">
-                                        <Image
+                                        {/* <Image */}
+                                        <img
                                             src={Static.ProfileURL}
                                             width={36}
                                             height={36}

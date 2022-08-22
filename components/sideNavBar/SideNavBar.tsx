@@ -13,7 +13,8 @@ const ExternalLink = ({ href, icon, alt }: ExternalLinkProps) => {
     return (
         <div className="group relative flex w-6 flex-col items-center">
             <a href={href} target="__blank" className="w-6">
-                <Image
+                {/* <Image */}
+                <img
                     src={icon}
                     width={20}
                     height={20}
@@ -77,7 +78,8 @@ const SideNavBar = () => {
                     <Link href="/">
                         <a>
                             <div className="m-auto aspect-square rounded-full bg-blue-100 p-1.5 text-[0px] tracking-normal">
-                                <Image
+                                {/* <Image */}
+                                <img
                                     src={Static.ProfileURL}
                                     alt="icon"
                                     width={100}
