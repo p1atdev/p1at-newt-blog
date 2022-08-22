@@ -17,7 +17,7 @@ interface Props {
 const PostLayout = ({ children, toc }: Props) => {
     return (
         <div className=" h-screen w-screen">
-            <div className="flex h-full w-full flex-col divide-x md:flex-row">
+            <div className="flex h-full w-full shrink-0 flex-col divide-x md:flex-row">
                 <div className="hidden basis-1/4 md:block lg:basis-1/5">
                     <SideNavBar />
                 </div>
@@ -55,7 +55,7 @@ const PostLayout = ({ children, toc }: Props) => {
                     </div>
 
                     {/* 目次 */}
-                    <div className="hidden grow basis-1/4 overflow-scroll py-10 px-6 pt-36 lg:block">
+                    <div className="hidden shrink-0 grow basis-1/4 overflow-scroll py-10 px-6 pt-36 lg:block">
                         <TOC toc={toc} />
                     </div>
                 </div>

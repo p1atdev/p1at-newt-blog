@@ -15,10 +15,12 @@ const NormalLayout = ({ children }: Props) => {
     return (
         <div className=" h-screen w-screen">
             <div className="flex h-full w-full flex-col divide-x md:flex-row">
-                <div className="hidden basis-1/4 md:block lg:basis-1/5">
+                {/* サイドバー */}
+                <div className="hidden shrink-0 basis-1/4 md:block lg:basis-1/5">
                     <SideNavBar />
                 </div>
 
+                {/* ドロワー */}
                 <div className="h-screen justify-end md:hidden">
                     <div className="absolute z-50 h-screen">
                         <SideNavBarDrawer />
@@ -44,8 +46,9 @@ const NormalLayout = ({ children }: Props) => {
                     </div>
                 </div>
 
+                {/* 右の領域 */}
                 <div className="flex grow flex-col divide-y overflow-clip md:overflow-auto lg:flex-row lg:divide-x ">
-                    <div className="grow divide-y lg:overflow-auto">
+                    <div className="grow  divide-y lg:overflow-auto">
                         <div className="py-10 px-6">{children}</div>
 
                         <div className="hidden lg:block">
@@ -54,7 +57,7 @@ const NormalLayout = ({ children }: Props) => {
                     </div>
 
                     {/* タグとか色々 */}
-                    <div className="grow basis-1/4 py-10 px-6 ">
+                    <div className="shrink-0 basis-1/3 py-10 px-6 ">
                         <p className=" text-2xl font-semibold">検索</p>
                         <p>Coming soon...</p>
                         <p className=" text-2xl font-semibold">タグ一覧</p>
