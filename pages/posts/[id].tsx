@@ -9,6 +9,7 @@ import { reformHTML } from "../../utils/markdown"
 
 interface Props {
     post: Post
+    markdown: JSON
 }
 
 export const getStaticProps = async (ctx: GetStaticPropsContext) => {
