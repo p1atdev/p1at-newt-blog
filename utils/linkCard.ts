@@ -9,7 +9,7 @@ export const createLinkCard = async (url: string) => {
     const twitterImage = (() => {
         if (ogp.twitter_card !== undefined) {
             if (ogp.twitter_card.images !== undefined) {
-                return ogp.twitter_card.images[0]
+                return ogp.twitter_card.images[0].url
             }
         }
 
@@ -18,7 +18,7 @@ export const createLinkCard = async (url: string) => {
     const openGraphImage = (() => {
         if (ogp.open_graph !== undefined) {
             if (ogp.open_graph.images !== undefined) {
-                return ogp.open_graph.images[0]
+                return ogp.open_graph.images[0].url
             }
         }
 
