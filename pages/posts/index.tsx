@@ -1,11 +1,16 @@
 import { GetStaticPropsContext, NextPageContext } from "next"
 import NextLink from "next/link"
+import Image from "next/image"
 import { Posts } from "../../types/posts"
 import { getPosts } from "../../utils/newt"
 import PostList from "../../components/PostList"
 import { useRouter } from "next/router"
 import { useEffect, useState } from "react"
 import NavBar from "../../components/NavBar"
+import SideNabBarToggle from "../../components/sideNavBar/SideNavBarToggle"
+import SideNavBarDrawer from "../../components/sideNavBar/SideNavBarDrawer"
+import SideNavBar from "../../components/sideNavBar/SideNavBar"
+import NormalLayout from "../../layout/NormalLayout"
 
 interface Props {
     posts?: Posts
@@ -42,15 +47,14 @@ const Page = ({ posts }: Props) => {
     }
 
     return (
-        <div className="mx-auto max-w-lg px-4 md:max-w-xl xl:max-w-2xl">
-            <NavBar />
-            <p className="py-8 text-3xl font-bold">記事一覧</p>
+        <NormalLayout>
+            <p className="mb-6 text-2xl font-bold">記事一覧</p>
             <PostList posts={posts.items.slice((page - 1) * limit, page * limit)} />
             {/* TODO: ここのページングを作る */}
             <div className="mt-8">
                 <p>ページ: {page}</p>
             </div>
-        </div>
+        </NormalLayout>
     )
 }
 

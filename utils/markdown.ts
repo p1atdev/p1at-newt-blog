@@ -3,8 +3,6 @@ import { rehype } from "rehype"
 import rehypePrism from "rehype-prism-plus"
 import { createLinkCard } from "./linkCard"
 
-const headingTags = ["h1", "h2", "h3", "h4", "h5", "h6"]
-
 export interface ReformResult {
     html: string
     toc: Heading[]
