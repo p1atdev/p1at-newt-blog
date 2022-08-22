@@ -27,7 +27,7 @@ const TOC = ({ toc }: Props) => {
         <ul className="flex flex-col gap-y-2">
             {toc.map((heading, index) => {
                 return (
-                    <li className="my-0.5 px-1">
+                    <li key={`${heading.id}${index}`} className="my-0.5 px-1">
                         <Link href={`#${heading.id}`} key={index}>
                             <a className="py-1">
                                 <p
