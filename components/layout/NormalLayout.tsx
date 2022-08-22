@@ -32,6 +32,7 @@ const NormalLayout = ({ children }: Props) => {
                                             width={36}
                                             height={36}
                                             className="rounded-full"
+                                            alt="Plat profile icon"
                                         />
                                     </div>
                                     <p>Plat Dev</p>
