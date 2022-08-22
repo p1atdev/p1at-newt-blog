@@ -5,11 +5,12 @@ import TagList from "../../components/TagList"
 import CreatedAt from "../../components/date/CreatedAt"
 import UpdatedAt from "../../components/date/UpdatedAt"
 import NavBar from "../../components/NavBar"
-import { reformHTML } from "../../utils/markdown"
+import { Heading, reformHTML } from "../../utils/markdown"
 
 interface Props {
     post: Post
-    markdown: JSON
+    html: string
+    toc: Heading[]
 }
 
 export const getStaticProps = async (ctx: GetStaticPropsContext) => {
@@ -36,13 +37,12 @@ export const getStaticProps = async (ctx: GetStaticPropsContext) => {
             }
         }
 
-        const html = await reformHTML(post.body)
-
-        post.body = html
+        const result = await reformHTML(post.body)
 
         return {
             props: {
                 post: post,
+                ...result,
             },
         }
     } catch (error) {
@@ -90,7 +90,7 @@ export const getStaticPaths = async (): Promise<GetStaticPathsResult> => {
     }
 }
 
-const Page = ({ post }: Props) => {
+const Page = ({ post, html, toc }: Props) => {
     return (
         <div className="mx-auto px-4 sm:max-w-lg md:max-w-xl xl:max-w-2xl">
             <NavBar />
@@ -105,7 +105,7 @@ const Page = ({ post }: Props) => {
                 <TagList tags={post.tags} />
             </div>
 
-            <div dangerouslySetInnerHTML={{ __html: post.body }} className="markdown"></div>
+            <div dangerouslySetInnerHTML={{ __html: html }} className="markdown"></div>
         </div>
     )
 }
