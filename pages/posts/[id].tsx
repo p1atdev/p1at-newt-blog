@@ -6,6 +6,10 @@ import CreatedAt from "../../components/date/CreatedAt"
 import UpdatedAt from "../../components/date/UpdatedAt"
 import NavBar from "../../components/NavBar"
 import { Heading, reformHTML } from "../../utils/markdown"
+import PostLayout from "../../layout/PostLayout"
+import TOC from "../../components/TOC"
+import { useState } from "react"
+import { Icon } from "@iconify/react"
 
 interface Props {
     post: Post
@@ -91,22 +95,42 @@ export const getStaticPaths = async (): Promise<GetStaticPathsResult> => {
 }
 
 const Page = ({ post, html, toc }: Props) => {
+    const [isTOCOpen, setIsTOCOpen] = useState(false)
+
     return (
-        <div className="mx-auto px-4 sm:max-w-lg md:max-w-xl xl:max-w-2xl">
-            <NavBar />
-
-            <div className="mb-8">
-                <p className="mt-8 text-6xl">{post.emoji.value}</p>
-                <h1 className="mt-6 text-3xl font-bold">{post.title}</h1>
-                <div className="flex gap-x-3">
-                    <CreatedAt date={post._sys.createdAt} />
-                    <UpdatedAt date={post._sys.updatedAt} />
+        <PostLayout toc={toc}>
+            <div className="mx-auto px-4 sm:max-w-lg md:max-w-xl xl:max-w-2xl">
+                <div className="mb-8">
+                    <p className="mt-8 text-6xl">{post.emoji.value}</p>
+                    <h1 className="mt-6 text-3xl font-bold">{post.title}</h1>
+                    <div className="flex gap-x-3">
+                        <CreatedAt date={post._sys.createdAt} />
+                        <UpdatedAt date={post._sys.updatedAt} />
+                    </div>
+                    <TagList tags={post.tags} />
                 </div>
-                <TagList tags={post.tags} />
-            </div>
 
-            <div dangerouslySetInnerHTML={{ __html: html }} className="markdown"></div>
-        </div>
+                <div className="lg:hidden">
+                    <div className="rounded border text-gray-500">
+                        <div
+                            className="flex cursor-pointer items-center justify-between"
+                            onClick={() => {
+                                setIsTOCOpen(!isTOCOpen)
+                            }}
+                        >
+                            <p className="px-4 py-2">目次 (クリックで展開)</p>
+                            <div className="px-4 py-2 text-lg font-bold">
+                                <Icon icon="akar-icons:chevron-down" />
+                            </div>
+                        </div>
+                        <hr />
+                        <div className="bg-gray-100 bg-opacity-30 px-4 py-2">{isTOCOpen && <TOC toc={toc} />}</div>
+                    </div>
+                </div>
+
+                <div dangerouslySetInnerHTML={{ __html: html }} className="markdown"></div>
+            </div>
+        </PostLayout>
     )
 }
 
