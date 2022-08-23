@@ -1,23 +1,28 @@
 import { GetStaticPropsContext, NextPageContext } from "next"
 import NextLink from "next/link"
 import Image from "next/image"
-import { Posts } from "../../types/posts"
-import { getPosts } from "../../utils/newt"
+import { Post } from "../../types/posts"
+import { Tag } from "../../types/tags"
+import { getPosts, getTags } from "../../utils/newt"
 import PostList from "../../components/PostList"
 import { useRouter } from "next/router"
 import { useEffect, useState } from "react"
 import NormalLayout from "../../components/layout/NormalLayout"
 
 interface Props {
-    posts?: Posts
+    posts?: Post[]
+    tags?: Tag[]
 }
 
 export const getStaticProps = async (ctx: GetStaticPropsContext) => {
     try {
         const posts = await getPosts()
+        const tags = await getTags()
+
         return {
             props: {
                 posts: posts,
+                tags: tags,
             },
         }
     } catch {
@@ -27,7 +32,7 @@ export const getStaticProps = async (ctx: GetStaticPropsContext) => {
     }
 }
 
-const Page = ({ posts }: Props) => {
+const Page = ({ posts, tags }: Props) => {
     const router = useRouter()
     const [page, setPage] = useState<number>(1)
     const limit = 10
@@ -43,9 +48,9 @@ const Page = ({ posts }: Props) => {
     }
 
     return (
-        <NormalLayout>
+        <NormalLayout tags={tags ?? []}>
             <p className="mb-6 text-2xl font-bold">記事一覧</p>
-            <PostList posts={posts.items.slice((page - 1) * limit, page * limit)} />
+            <PostList posts={posts.slice((page - 1) * limit, page * limit)} />
             {/* TODO: ここのページングを作る */}
             <div className="mt-8">
                 <p>ページ: {page}</p>

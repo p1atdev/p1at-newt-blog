@@ -1,6 +1,6 @@
 import { createClient } from "newt-client-js"
-import { Posts } from "../types/posts"
-import { Post } from "../types/post"
+import { Posts, Post } from "../types/posts"
+import { Tag, Tags } from "../types/tags"
 
 interface Secrets {
     NEWT_SPACE_UID: string
@@ -24,7 +24,7 @@ const getSecrets = (): Secrets => {
     }
 }
 
-export const getPosts = async (): Promise<Posts | undefined> => {
+export const getPosts = async (): Promise<Post[] | undefined> => {
     const secrets = getSecrets()
     const NEWT_POST_MODEL_UID = process.env.NEWT_POST_MODEL_UID!
 
@@ -44,7 +44,7 @@ export const getPosts = async (): Promise<Posts | undefined> => {
             modelUid: NEWT_POST_MODEL_UID,
         })
 
-        return posts
+        return posts.items
     } catch (error) {
         console.error(error)
 
@@ -74,6 +74,37 @@ export const getPost = async (id: string): Promise<Post | undefined> => {
         })
 
         return post
+    } catch (error) {
+        console.error(error)
+
+        return undefined
+    }
+}
+
+export const getTags = async (): Promise<Tag[] | undefined> => {
+    const secrets = getSecrets()
+    const NEWT_TAG_MODEL_UID = process.env.NEWT_TAG_MODEL_UID!
+
+    if (!NEWT_TAG_MODEL_UID) {
+        throw new Error("Missing tag model uid")
+    }
+
+    const client = createClient({
+        spaceUid: secrets.NEWT_SPACE_UID,
+        token: secrets.NEWT_CDN_API_TOKEN,
+        apiType: "cdn",
+    })
+
+    try {
+        const tags: Tags = await client.getContents({
+            appUid: secrets.NEWT_APP_UID,
+            modelUid: NEWT_TAG_MODEL_UID,
+            query: {
+                order: ["color"],
+            },
+        })
+
+        return tags.items
     } catch (error) {
         console.error(error)
 

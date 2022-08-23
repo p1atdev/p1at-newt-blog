@@ -1,5 +1,5 @@
 import { GetStaticPathsResult, GetStaticPropsContext } from "next"
-import { Post } from "../../types/post"
+import { Post } from "../../types/posts"
 import { getPost, getPosts } from "../../utils/newt"
 import TagList from "../../components/TagList"
 import CreatedAt from "../../components/date/CreatedAt"
@@ -71,7 +71,7 @@ export const getStaticPaths = async (): Promise<GetStaticPathsResult> => {
             }
         }
 
-        const paths = posts.items.map((post) => {
+        const paths = posts.map((post) => {
             return {
                 params: {
                     id: post._id,
@@ -104,7 +104,7 @@ const Page = ({ post, html, toc }: Props) => {
                     <h1 className="mt-6 text-3xl font-bold">{post.title}</h1>
                     <div className="flex gap-x-3">
                         <CreatedAt date={post._sys.createdAt} />
-                        <UpdatedAt date={post._sys.updatedAt} />
+                        <UpdatedAt date={post._sys.raw.publishedAt} />
                     </div>
                     <TagList tags={post.tags} />
                 </div>

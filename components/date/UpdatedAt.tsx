@@ -12,7 +12,7 @@ const UpdatedAt = ({ date }: Props) => {
 
     useEffect(() => {
         setFormatedDate(format(new Date(date), "yyyy/MM/dd", { locale: ja }))
-    }, [])
+    }, [date])
 
     return (
         <div className="flex items-center gap-x-1 text-gray-400">

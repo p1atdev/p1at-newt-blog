@@ -10,9 +10,9 @@ interface Props {
     tags: TagItem[]
 }
 
-const Tags = ({ tags }: Props) => {
+const TagList = ({ tags }: Props) => {
     return (
-        <div className="flex pt-2 text-sm">
+        <div className="flex flex-wrap gap-x-2 gap-y-3 pt-2 text-sm">
             {tags.map((tag) => {
                 return <Tag key={tag._id} name={tag.name} color={tag.color} />
             })}
@@ -20,4 +20,4 @@ const Tags = ({ tags }: Props) => {
     )
 }
 
-export default Tags
+export default TagList

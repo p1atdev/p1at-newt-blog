@@ -6,12 +6,15 @@ import SideNavBarDrawer from "../sideNavBar/SideNavBarDrawer"
 import SideNabBarToggle from "../sideNavBar/SideNavBarToggle"
 import { Static } from "../../utils/static"
 import Footer from "../Footer"
+import { Tag } from "../../types/tags"
+import TagList from "../TagList"
 
 interface Props {
     children: ReactNode | ReactNode[]
+    tags: Tag[]
 }
 
-const NormalLayout = ({ children }: Props) => {
+const NormalLayout = ({ children, tags }: Props) => {
     return (
         <div className=" h-screen w-screen">
             <div className="flex h-full w-full flex-col divide-x md:flex-row">
@@ -59,9 +62,10 @@ const NormalLayout = ({ children }: Props) => {
                     {/* タグとか色々 */}
                     <div className="shrink-0 basis-1/3 py-10 px-6 ">
                         <p className=" text-2xl font-semibold">検索</p>
+                        {/* TODO: 検索欄 */}
                         <p>Coming soon...</p>
                         <p className=" text-2xl font-semibold">タグ一覧</p>
-                        <p>Coming soon...</p>
+                        <TagList tags={tags} />
                     </div>
 
                     <div className="block lg:hidden">
