@@ -6,21 +6,25 @@ const SideNavBarDrawer = () => {
 
     const { setDrawerState } = useDrawerStateMutators()
 
-    const style = isOpen ? "" : "hidden"
-
-    return (
-        <div className={`z-50 ${style} flex h-full bg-gray-500 bg-opacity-50`}>
-            <div className=" bg-white">
-                <SideNavBar />
+    if (isOpen) {
+        return (
+            <div className={`z-50 flex h-full w-full bg-gray-500 bg-opacity-50`}>
+                <div className="h-screen bg-white">
+                    <div className="h-[100svh]">
+                        <SideNavBar />
+                    </div>
+                </div>
+                <div
+                    className=" max-h-screen w-40 max-w-full"
+                    onClick={() => {
+                        setDrawerState(false)
+                    }}
+                ></div>
             </div>
-            <div
-                className="w-40"
-                onClick={() => {
-                    setDrawerState(false)
-                }}
-            ></div>
-        </div>
-    )
+        )
+    } else {
+        return <></>
+    }
 }
 
 export default SideNavBarDrawer

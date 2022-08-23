@@ -16,7 +16,7 @@ interface Props {
 
 const NormalLayout = ({ children, tags }: Props) => {
     return (
-        <div className=" h-screen w-screen">
+        <div className="h-screen w-screen">
             <div className="flex h-full w-full flex-col divide-x md:flex-row">
                 {/* サイドバー */}
                 <div className="hidden shrink-0 basis-1/4 md:block lg:basis-1/5">
@@ -24,8 +24,8 @@ const NormalLayout = ({ children, tags }: Props) => {
                 </div>
 
                 {/* ドロワー */}
-                <div className="h-screen justify-end md:hidden">
-                    <div className="absolute z-50 h-screen">
+                <div className="h-full w-full justify-end md:hidden">
+                    <div className="fixed z-10 max-h-full w-full">
                         <SideNavBarDrawer />
                     </div>
                     <div className="mx-4 mt-2 flex items-center justify-between">
@@ -50,7 +50,7 @@ const NormalLayout = ({ children, tags }: Props) => {
                 </div>
 
                 {/* 右の領域 */}
-                <div className="flex grow flex-col divide-y overflow-clip md:overflow-auto lg:flex-row lg:divide-x ">
+                <div className="flex grow flex-col divide-y md:overflow-auto lg:flex-row lg:divide-x ">
                     <div className="grow  divide-y lg:overflow-auto">
                         <div className="py-10 px-6">{children}</div>
 
