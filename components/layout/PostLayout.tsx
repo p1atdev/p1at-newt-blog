@@ -57,7 +57,8 @@ const PostLayout = ({ children, toc }: Props) => {
                     </div>
 
                     {/* 目次 */}
-                    <div className="hidden shrink-0 grow basis-1/4 overflow-scroll py-10 px-6 pt-36 lg:block">
+                    <div className="hidden shrink-0 grow basis-1/4 overflow-scroll py-10 px-6 pt-12 lg:block">
+                        <p className="my-8 text-xl font-medium">目次</p>
                         <TOC toc={toc} />
                     </div>
                 </div>
