@@ -6,6 +6,8 @@ export const createLinkCard = async (url: string) => {
 
     // console.log(ogp)
 
+    const description = ogp.description || ""
+
     const twitterImage = (() => {
         if (ogp.twitter_card !== undefined) {
             if (ogp.twitter_card.images !== undefined) {
@@ -29,11 +31,15 @@ export const createLinkCard = async (url: string) => {
 
     const card = `
     <a href="${url}" targe="__blank" class="link-card">
-        <div>
+        <div class="info">
             <p class="title">${ogp.title ?? "No Title"}</p>
-            <p class="url">${url}</p>
+            <p class="description">${description}</p>
+            <div class="url">
+                <img class="favicon" src="${ogp.favicon ?? ""}" alt="" />
+                <p class="hostname">${new URL(url).hostname}</p>
+            </div>
         </div>
-        <img src="${image ?? ""}" alt="${""}">
+        <img class="thumbnail" src="${image ?? ""}" alt="${""}">
     </a>
         
         `.trim()
