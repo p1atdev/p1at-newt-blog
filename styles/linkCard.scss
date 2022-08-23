@@ -1,17 +1,32 @@
 a.link-card {
-    @apply my-10 -mx-4 flex gap-x-2 rounded border py-4 px-6 hover:shadow-sm;
+    @apply my-10 -mx-1 grid max-h-32 grid-cols-6 gap-x-2 rounded border hover:shadow-sm;
 
-    p {
-        @apply my-1;
-        &.title {
-            @apply text-lg font-semibold;
+    div.info {
+        @apply col-span-4 grid grid-cols-1 px-4 py-3 md:py-4 md:px-6;
+
+        p {
+            @apply my-0 break-words;
+            &.title {
+                @apply row-span-2 max-h-12 overflow-hidden text-ellipsis font-semibold;
+            }
+            &.description {
+                @apply row-span-1 truncate text-sm text-gray-500;
+            }
         }
-        &.url {
-            @apply text-gray-500;
+
+        div.url {
+            @apply row-span-1 flex items-center gap-x-1 text-sm;
+            .favicon {
+                @apply h-4 object-contain;
+            }
+
+            .hostname {
+                // @apply;
+            }
         }
     }
 
-    img {
-        @apply my-auto ml-auto max-h-20;
+    img.thumbnail {
+        @apply col-span-2 ml-auto h-32 object-cover;
     }
 }

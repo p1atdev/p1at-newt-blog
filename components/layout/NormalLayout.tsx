@@ -6,14 +6,17 @@ import SideNavBarDrawer from "../sideNavBar/SideNavBarDrawer"
 import SideNabBarToggle from "../sideNavBar/SideNavBarToggle"
 import { Static } from "../../utils/static"
 import Footer from "../Footer"
+import { Tag } from "../../types/tags"
+import TagList from "../TagList"
 
 interface Props {
     children: ReactNode | ReactNode[]
+    tags: Tag[]
 }
 
-const NormalLayout = ({ children }: Props) => {
+const NormalLayout = ({ children, tags }: Props) => {
     return (
-        <div className=" h-screen w-screen">
+        <div className="h-screen w-screen">
             <div className="flex h-full w-full flex-col divide-x md:flex-row">
                 {/* サイドバー */}
                 <div className="hidden shrink-0 basis-1/4 md:block lg:basis-1/5">
@@ -21,8 +24,8 @@ const NormalLayout = ({ children }: Props) => {
                 </div>
 
                 {/* ドロワー */}
-                <div className="h-screen justify-end md:hidden">
-                    <div className="absolute z-50 h-screen">
+                <div className="h-full w-full justify-end md:hidden">
+                    <div className="fixed z-10 max-h-full w-full">
                         <SideNavBarDrawer />
                     </div>
                     <div className="mx-4 mt-2 flex items-center justify-between">
@@ -47,7 +50,7 @@ const NormalLayout = ({ children }: Props) => {
                 </div>
 
                 {/* 右の領域 */}
-                <div className="flex grow flex-col divide-y overflow-clip md:overflow-auto lg:flex-row lg:divide-x ">
+                <div className="flex grow flex-col divide-y md:overflow-auto lg:flex-row lg:divide-x ">
                     <div className="grow  divide-y lg:overflow-auto">
                         <div className="py-10 px-6">{children}</div>
 
@@ -59,9 +62,10 @@ const NormalLayout = ({ children }: Props) => {
                     {/* タグとか色々 */}
                     <div className="shrink-0 basis-1/3 py-10 px-6 ">
                         <p className=" text-2xl font-semibold">検索</p>
+                        {/* TODO: 検索欄 */}
                         <p>Coming soon...</p>
                         <p className=" text-2xl font-semibold">タグ一覧</p>
-                        <p>Coming soon...</p>
+                        <TagList tags={tags} />
                     </div>
 
                     <div className="block lg:hidden">

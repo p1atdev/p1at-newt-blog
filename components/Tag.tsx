@@ -7,7 +7,7 @@ const Tag = ({ name, color }: Props) => {
     return (
         <div>
             <span
-                className={`mr-1 rounded-full px-2.5 py-0.5 text-zinc-900 text-opacity-60`}
+                className={`rounded-full px-2.5 py-0.5 text-zinc-900 text-opacity-60`}
                 style={{ backgroundColor: color }}
             >
                 {name}

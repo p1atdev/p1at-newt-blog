@@ -2,21 +2,25 @@ import { GetStaticPropsContext } from "next"
 import Head from "next/head"
 import NextLink from "next/link"
 import PostList from "../components/PostList"
-import { Posts } from "../types/posts"
-import { getPosts } from "../utils/newt"
+import { Post } from "../types/posts"
+import { getPosts, getTags } from "../utils/newt"
 import NormalLayout from "../components/layout/NormalLayout"
+import { Tag } from "../types/tags"
 
 interface Props {
-    posts?: Posts
+    posts?: Post[]
+    tags?: Tag[]
 }
 
 export const getStaticProps = async (ctx: GetStaticPropsContext) => {
     try {
         const posts = await getPosts()
+        const tags = await getTags()
 
         return {
             props: {
                 posts: posts,
+                tags: tags,
             },
         }
     } catch (error) {
@@ -28,13 +32,13 @@ export const getStaticProps = async (ctx: GetStaticPropsContext) => {
     }
 }
 
-const Index = ({ posts }: Props) => {
+const Index = ({ posts, tags }: Props) => {
     if (posts === undefined) {
         return <div>No posts found</div>
     }
 
     return (
-        <NormalLayout>
+        <NormalLayout tags={tags ?? []}>
             <div className="mb-1">
                 <h2 className=" text-2xl font-semibold">最新記事</h2>
                 <div className="flex justify-end">
@@ -43,7 +47,7 @@ const Index = ({ posts }: Props) => {
                     </NextLink>
                 </div>
             </div>
-            <PostList posts={posts.items.slice(0, 5)} />
+            <PostList posts={posts.slice(0, 5)} />
         </NormalLayout>
     )
 }
