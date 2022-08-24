@@ -21,7 +21,7 @@ const GrassCalendar = ({ months = 6 }: Props) => {
 
     return (
         <div>
-            {error && <div>Error: {JSON.stringify(error)}</div>}
+            {error && <div>植栽中...🌿🌿🌿</div>}
             <div className="flex gap-x-1">
                 {weeks &&
                     weeks.map((week, index) => {
