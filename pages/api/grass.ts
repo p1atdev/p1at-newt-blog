@@ -1,5 +1,5 @@
 import type { NextApiRequest as Req, NextApiResponse as Res } from "next"
-import { request, gql, GraphQLClient } from "graphql-request"
+import { gql, GraphQLClient } from "graphql-request"
 import { GrassCalendarRes } from "../../types/grass"
 
 const handler = async (req: Req, res: Res) => {

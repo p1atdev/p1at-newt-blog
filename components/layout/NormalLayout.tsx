@@ -73,7 +73,7 @@ const NormalLayout = ({ children, tags }: Props) => {
                         </div>
                         <div>
                             <p className="py-2 text-2xl font-semibold">ガーデニング</p>
-                            <GrassCalendarResponsive def={5} sm={8} md={8} lg={4} xl={6} />
+                            <GrassCalendarResponsive def={5} sm={8} md={8} lg={4} xl={5} />
                         </div>
                     </div>
 

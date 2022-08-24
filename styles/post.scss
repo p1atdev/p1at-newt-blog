@@ -42,4 +42,18 @@
             @apply rounded-sm bg-zinc-100 px-2 py-0.5 text-zinc-900;
         }
     }
+
+    ul {
+        @apply ml-6 list-inside list-disc;
+        li {
+            @apply my-3;
+        }
+    }
+
+    ol {
+        @apply ml-6 list-inside list-decimal;
+        li {
+            @apply my-3;
+        }
+    }
 }
