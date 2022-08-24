@@ -6,8 +6,6 @@ export const useGrass = () => {
     const data: GrassCalendarRes = res.data
     const error = res.error
 
-    // console.log(res)
-
     if (error) {
         return {
             error,
@@ -16,8 +14,6 @@ export const useGrass = () => {
 
     try {
         const grass = data.user.contributionsCollection.contributionCalendar.weeks
-
-        // console.log(grass)
 
         return {
             grass: grass,

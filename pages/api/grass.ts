@@ -35,8 +35,6 @@ const handler = async (req: Req, res: Res) => {
     try {
         const data: GrassCalendarRes = await client.request(query, variables)
 
-        // console.log(data)
-
         res.status(200).json({ ...data })
     } catch (error) {
         res.status(500).json({ error })

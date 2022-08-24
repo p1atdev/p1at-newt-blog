@@ -44,7 +44,7 @@ interface GrassTileProps extends ComponentProps<"div"> {
 }
 
 const defaultColorSet = new Map([
-    [0, "#f5f5f5"],
+    [0, "#e4f2e4"],
     [1, "#a5e68b"],
     [2, "#60cf64"],
     [4, "#37c94a"],
