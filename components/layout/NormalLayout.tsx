@@ -8,6 +8,7 @@ import { Static } from "../../utils/static"
 import Footer from "../Footer"
 import { Tag } from "../../types/tags"
 import TagList from "../TagList"
+import GrassCalendarResponsive from "../widget/GrassCalendarResponsive"
 
 interface Props {
     children: ReactNode | ReactNode[]
@@ -60,12 +61,20 @@ const NormalLayout = ({ children, tags }: Props) => {
                     </div>
 
                     {/* タグとか色々 */}
-                    <div className="shrink-0 basis-1/3 py-10 px-6 ">
-                        <p className=" text-2xl font-semibold">検索</p>
-                        {/* TODO: 検索欄 */}
-                        <p>Coming soon...</p>
-                        <p className=" text-2xl font-semibold">タグ一覧</p>
-                        <TagList tags={tags} />
+                    <div className="flex shrink-0 basis-1/3 flex-col gap-y-6 py-10 px-6">
+                        <div>
+                            <p className="py-2 text-2xl font-semibold">検索</p>
+                            {/* TODO: 検索欄 */}
+                            <p>Coming soon...</p>
+                        </div>
+                        <div className="">
+                            <p className="py-2 text-2xl font-semibold">タグ一覧</p>
+                            <TagList tags={tags} />
+                        </div>
+                        <div>
+                            <p className="py-2 text-2xl font-semibold">ガーデニング</p>
+                            <GrassCalendarResponsive def={5} sm={8} md={8} lg={4} xl={6} />
+                        </div>
                     </div>
 
                     <div className="block lg:hidden">
