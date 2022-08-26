@@ -9,7 +9,7 @@ import PostLayout from "../../components/layout/PostLayout"
 import TOC from "../../components/TOC"
 import { useEffect, useState } from "react"
 import { Icon } from "@iconify/react"
-import Markdown from "../../components/Markdown"
+// import Markdown from "../../components/Markdown"
 
 interface Props {
     post: Post
