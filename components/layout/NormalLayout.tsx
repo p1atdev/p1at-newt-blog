@@ -9,6 +9,7 @@ import Footer from "../Footer"
 import { Tag } from "../../types/tags"
 import TagList from "../TagList"
 import GrassCalendarResponsive from "../widget/GrassCalendarResponsive"
+import Donate from "../widget/Donate"
 
 interface Props {
     children: ReactNode | ReactNode[]
@@ -61,7 +62,7 @@ const NormalLayout = ({ children, tags }: Props) => {
                     </div>
 
                     {/* タグとか色々 */}
-                    <div className="flex shrink-0 basis-1/3 flex-col gap-y-6 py-10 px-6">
+                    <div className="flex shrink-0 basis-1/3 flex-col gap-y-6 py-10 px-6 lg:overflow-auto">
                         <div>
                             <p className="py-2 text-2xl font-semibold">検索</p>
                             {/* TODO: 検索欄 */}
@@ -74,6 +75,11 @@ const NormalLayout = ({ children, tags }: Props) => {
                         <div>
                             <p className="py-2 text-2xl font-semibold">ガーデニング</p>
                             <GrassCalendarResponsive def={5} sm={8} md={8} lg={4} xl={5} />
+                        </div>
+
+                        <div>
+                            <p className="py-2 text-2xl font-semibold">支援</p>
+                            <Donate />
                         </div>
                     </div>
 

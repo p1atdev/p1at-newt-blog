@@ -7,8 +7,9 @@ import UpdatedAt from "../../components/date/UpdatedAt"
 import { Heading, reformHTML } from "../../utils/markdown"
 import PostLayout from "../../components/layout/PostLayout"
 import TOC from "../../components/TOC"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Icon } from "@iconify/react"
+// import Markdown from "../../components/Markdown"
 
 interface Props {
     post: Post
@@ -126,6 +127,8 @@ const Page = ({ post, html, toc }: Props) => {
                         <div className="bg-gray-100 bg-opacity-30 px-4 py-2">{isTOCOpen && <TOC toc={toc} />}</div>
                     </div>
                 </div>
+
+                {/* <Markdown html={html} /> */}
 
                 <div dangerouslySetInnerHTML={{ __html: html }} className="markdown"></div>
             </div>
