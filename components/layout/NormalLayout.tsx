@@ -62,7 +62,7 @@ const NormalLayout = ({ children, tags }: Props) => {
                     </div>
 
                     {/* タグとか色々 */}
-                    <div className="flex shrink-0 basis-1/3 flex-col gap-y-6 overflow-auto py-10 px-6">
+                    <div className="flex shrink-0 basis-1/3 flex-col gap-y-6 py-10 px-6 lg:overflow-auto">
                         <div>
                             <p className="py-2 text-2xl font-semibold">検索</p>
                             {/* TODO: 検索欄 */}

@@ -26,8 +26,8 @@ const Donate = () => {
     return (
         <div>
             {plans.map((plan) => (
-                <div className="my-3">
-                    <a key={plan.url} href={plan.url} target="__blank">
+                <div key={plan.url} className="my-3">
+                    <a href={plan.url} target="__blank">
                         <p className="rounded-md bg-indigo-100 py-1 px-2 text-indigo-800 transition-all duration-150 hover:bg-indigo-200  hover:ring">
                             {plan.title}
                         </p>

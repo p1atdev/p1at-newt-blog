@@ -60,7 +60,7 @@ const GrassTile = ({ count, colorSet = defaultColorSet }: GrassTileProps) => {
                 setColor(value)
             }
         })
-    }, [count])
+    }, [count, colorSet])
 
     return (
         <div>
