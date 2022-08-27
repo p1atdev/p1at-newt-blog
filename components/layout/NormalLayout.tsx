@@ -10,6 +10,7 @@ import { Tag } from "../../types/tags"
 import TagList from "../TagList"
 import GrassCalendarResponsive from "../widget/GrassCalendarResponsive"
 import Donate from "../widget/Donate"
+import Search from "../widget/Search"
 
 interface Props {
     children: ReactNode | ReactNode[]
@@ -64,9 +65,8 @@ const NormalLayout = ({ children, tags }: Props) => {
                     {/* タグとか色々 */}
                     <div className="flex shrink-0 basis-1/3 flex-col gap-y-6 py-10 px-6 lg:overflow-auto">
                         <div>
-                            <p className="py-2 text-2xl font-semibold">検索</p>
-                            {/* TODO: 検索欄 */}
-                            <p>Coming soon...</p>
+                            {/* <p className="py-2 text-2xl font-semibold">検索</p> */}
+                            <Search />
                         </div>
                         <div className="">
                             <p className="py-2 text-2xl font-semibold">タグ一覧</p>
