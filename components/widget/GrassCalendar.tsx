@@ -22,9 +22,9 @@ const GrassCalendar = ({ months = 6 }: Props) => {
     return (
         <div>
             {error && <div>植栽中...🌿🌿🌿</div>}
-            <div className="flex gap-x-1">
-                {weeks &&
-                    weeks.map((week, index) => {
+            {weeks && (
+                <div className="flex gap-x-1">
+                    {weeks.map((week, index) => {
                         return (
                             <div key={`week:${index}`} className="flex flex-col gap-y-1">
                                 {week.contributionDays.map((day) => {
@@ -33,7 +33,8 @@ const GrassCalendar = ({ months = 6 }: Props) => {
                             </div>
                         )
                     })}
-            </div>
+                </div>
+            )}
         </div>
     )
 }
