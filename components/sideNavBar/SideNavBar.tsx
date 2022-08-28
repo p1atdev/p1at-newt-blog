@@ -101,9 +101,7 @@ const SideNavBar = () => {
             </div>
 
             <div>
-                <p className="py-2 px-6 text-sm text-gray-500">
-                    気ままに生きてます。好きなゲームはアークナイツ。嫌いなものは数学。
-                </p>
+                <p className="py-2 px-6 text-sm text-gray-500">リアルの世界は明日も僕抜きで機能して回る〜♪</p>
             </div>
 
             <div className="mt-auto mb-10 flex flex-col divide-y divide-blue-100">
