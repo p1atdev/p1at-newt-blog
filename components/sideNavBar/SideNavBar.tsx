@@ -40,6 +40,11 @@ const externalLinks: ExternalLinkProps[] = [
         alt: "Twitter",
     },
     {
+        href: "https://www.instagram.com/plat_diffusion/",
+        icon: "https://api.iconify.design/akar-icons/instagram-fill.svg",
+        alt: "Instagram",
+    },
+    {
         href: "https://zenn.dev/platina",
         icon: "https://api.iconify.design/simple-icons/zenn.svg",
         alt: "Zenn",
