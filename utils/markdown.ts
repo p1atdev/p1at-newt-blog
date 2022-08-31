@@ -37,7 +37,7 @@ export const reformHTML = async (html: string): Promise<ReformResult> => {
 // TODO: ここをちゃんとTSXのものに入れ替えるようにする
 const reformHeadings = async (dom: JSDOM) => {
     dom.window.document.querySelectorAll("h1, h2, h3, h4, h5, h6").forEach((heading) => {
-        heading.id = heading.innerHTML.replace(/\s/g, "-")
+        heading.id = `${heading.innerHTML.replace(/\s/g, "-")}-${Math.random()}`
     })
 }
 
