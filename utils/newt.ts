@@ -3,29 +3,55 @@ import { Posts, Post } from "../types/posts"
 import { Tag, Tags } from "../types/tags"
 import Fuse from "fuse.js"
 
-interface Secrets {
+interface ClientSecrets {
     NEWT_SPACE_UID: string
-    NEWT_CDN_API_TOKEN: string
-    NEWT_APP_UID: string
+    NEWT_API_TOKEN: string
+    NEWT_API_TYPE: "cdn" | "api"
 }
 
-const getSecrets = (): Secrets => {
-    const NEWT_SPACE_UID = process.env.NEWT_SPACE_UID!
-    const NEWT_CDN_API_TOKEN = process.env.NEWT_CDN_API_TOKEN!
-    const NEWT_APP_UID = process.env.NEWT_APP_UID!
+interface AppParam {
+    NEWT_APP_UID: string
+    NEWT_POST_MODEL_UID: string
+    NEWT_TAG_MODEL_UID: string
+}
 
-    if (!NEWT_SPACE_UID || !NEWT_CDN_API_TOKEN || !NEWT_APP_UID) {
+const getSecrets = (): ClientSecrets => {
+    const NEWT_SPACE_UID = process.env.NEWT_SPACE_UID!
+    const NEWT_API_TOKEN = process.env.NEWT_API_TOKEN!
+    const NEWT_API_TYPE = process.env.NEWT_API_TYPE!
+
+    if (!NEWT_SPACE_UID || !NEWT_API_TOKEN) {
         throw new Error("Missing environment variables")
+    }
+
+    if (NEWT_API_TYPE !== "cdn" && NEWT_API_TYPE !== "api") {
+        throw new Error("Invalid environment variable: NEWT_APP_TYPE")
     }
 
     return {
         NEWT_SPACE_UID,
-        NEWT_CDN_API_TOKEN,
-        NEWT_APP_UID,
+        NEWT_API_TOKEN,
+        NEWT_API_TYPE,
     }
 }
 
-export const getPosts = async (): Promise<Post[] | undefined> => {
+const getParam = (): AppParam => {
+    const NEWT_APP_UID = process.env.NEWT_APP_UID!
+    const NEWT_POST_MODEL_UID = process.env.NEWT_POST_MODEL_UID!
+    const NEWT_TAG_MODEL_UID = process.env.NEWT_TAG_MODEL_UID!
+
+    if (!NEWT_APP_UID || !NEWT_POST_MODEL_UID || !NEWT_TAG_MODEL_UID) {
+        throw new Error("Missing environment variables")
+    }
+
+    return {
+        NEWT_APP_UID,
+        NEWT_POST_MODEL_UID,
+        NEWT_TAG_MODEL_UID,
+    }
+}
+
+const newClient = () => {
     const secrets = getSecrets()
     const NEWT_POST_MODEL_UID = process.env.NEWT_POST_MODEL_UID!
 
@@ -35,14 +61,21 @@ export const getPosts = async (): Promise<Post[] | undefined> => {
 
     const client = createClient({
         spaceUid: secrets.NEWT_SPACE_UID,
-        token: secrets.NEWT_CDN_API_TOKEN,
-        apiType: "cdn",
+        token: secrets.NEWT_API_TOKEN,
+        apiType: secrets.NEWT_API_TYPE,
     })
+
+    return client
+}
+
+export const getPosts = async (): Promise<Post[] | undefined> => {
+    const client = newClient()
+    const param = getParam()
 
     try {
         const posts: Posts = await client.getContents({
-            appUid: secrets.NEWT_APP_UID,
-            modelUid: NEWT_POST_MODEL_UID,
+            appUid: param.NEWT_APP_UID,
+            modelUid: param.NEWT_POST_MODEL_UID,
         })
 
         return posts.items
@@ -54,23 +87,13 @@ export const getPosts = async (): Promise<Post[] | undefined> => {
 }
 
 export const getPost = async (id: string): Promise<Post | undefined> => {
-    const secrets = getSecrets()
-    const NEWT_POST_MODEL_UID = process.env.NEWT_POST_MODEL_UID!
-
-    if (!NEWT_POST_MODEL_UID) {
-        throw new Error("Missing post model uid")
-    }
-
-    const client = createClient({
-        spaceUid: secrets.NEWT_SPACE_UID,
-        token: secrets.NEWT_CDN_API_TOKEN,
-        apiType: "cdn",
-    })
+    const client = newClient()
+    const param = getParam()
 
     try {
         const post: Post = await client.getContent({
-            appUid: secrets.NEWT_APP_UID,
-            modelUid: NEWT_POST_MODEL_UID,
+            appUid: param.NEWT_APP_UID,
+            modelUid: param.NEWT_POST_MODEL_UID,
             contentId: id,
         })
 
@@ -83,23 +106,13 @@ export const getPost = async (id: string): Promise<Post | undefined> => {
 }
 
 export const searchPosts = async (query: string, page: number, count: number): Promise<Posts | undefined> => {
-    const secrets = getSecrets()
-    const NEWT_POST_MODEL_UID = process.env.NEWT_POST_MODEL_UID!
-
-    if (!NEWT_POST_MODEL_UID) {
-        throw new Error("Missing post model uid")
-    }
-
-    const client = createClient({
-        spaceUid: secrets.NEWT_SPACE_UID,
-        token: secrets.NEWT_CDN_API_TOKEN,
-        apiType: "cdn",
-    })
+    const client = newClient()
+    const param = getParam()
 
     try {
         const posts: Posts = await client.getContents({
-            appUid: secrets.NEWT_APP_UID,
-            modelUid: NEWT_POST_MODEL_UID,
+            appUid: param.NEWT_APP_UID,
+            modelUid: param.NEWT_POST_MODEL_UID,
         })
 
         const fuse = new Fuse(posts.items, {
@@ -124,23 +137,13 @@ export const searchPosts = async (query: string, page: number, count: number): P
 }
 
 export const getTags = async (): Promise<Tag[] | undefined> => {
-    const secrets = getSecrets()
-    const NEWT_TAG_MODEL_UID = process.env.NEWT_TAG_MODEL_UID!
-
-    if (!NEWT_TAG_MODEL_UID) {
-        throw new Error("Missing tag model uid")
-    }
-
-    const client = createClient({
-        spaceUid: secrets.NEWT_SPACE_UID,
-        token: secrets.NEWT_CDN_API_TOKEN,
-        apiType: "cdn",
-    })
+    const client = newClient()
+    const param = getParam()
 
     try {
         const tags: Tags = await client.getContents({
-            appUid: secrets.NEWT_APP_UID,
-            modelUid: NEWT_TAG_MODEL_UID,
+            appUid: param.NEWT_APP_UID,
+            modelUid: param.NEWT_TAG_MODEL_UID,
             query: {
                 order: ["color"],
             },
