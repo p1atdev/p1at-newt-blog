@@ -28,7 +28,7 @@ const Footer = () => {
             </div>
             <div className="mb-4 flex gap-x-4 text-gray-300">
                 <p>&copy; Plat 2022</p>
-                <a className="cursor-pointer hover:underline">
+                <a href="https://github.com/p1atdev/p1at-newt-blog" className="cursor-pointer hover:underline">
                     <p className="flex items-center text-gray-500">
                         <span className="pr-1">
                             <Icon icon="akar-icons:github-fill" />
