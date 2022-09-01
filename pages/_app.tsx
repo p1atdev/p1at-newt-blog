@@ -24,7 +24,7 @@ function MyApp({ Component, pageProps }: AppProps) {
                 <meta property="og:description" content={metaDescription} />
                 <meta property="og:image" content={`${SITE_URL}/ogp_image.png`} />
 
-                <meta name="twitter:card" content="summary" />
+                <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:site" content="@p1atdev" />
                 <meta name="twitter:creator" content="@p1atdev" />
             </Head>
