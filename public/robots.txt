@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://www.p1at.dev
+
+# Sitemaps
+Sitemap: https://www.p1at.dev/sitemap.xml
