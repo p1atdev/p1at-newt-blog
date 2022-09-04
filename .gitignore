@@ -46,4 +46,4 @@ robots.txt
 sitemap*.xml*
 
 # ogp
-/public/ogp/**
+/asset/ogp/**
