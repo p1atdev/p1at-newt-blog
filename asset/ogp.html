@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="https://cdn.tailwindcss.com"></script>
+    </head>
+    <body>
+        <img class="absolute" src="https://blog-asset.p1at.dev/ogp_bg.png" />
+
+        <div class="absolute z-50 h-full px-40 pt-20 pb-24">
+            <div class="flex h-full flex-col">
+                <div class="grow divide-y-8 divide-dashed divide-slate-300 text-7xl font-bold">
+                    <p id="emoji" class="mx-6 pb-4 text-8xl">😄</p>
+                    <p id="ogp_title" class="pt-4">Post Title here...</p>
+                </div>
+
+                <div class="flex items-center">
+                    <p class="ml-auto text-right text-5xl font-semibold">Plat Dev Blog</p>
+                    <img class="ml-4 h-16 w-16" src="https://blog-asset.p1at.dev/blog-icon.png" />
+                </div>
+            </div>
+        </div>
+        <script>
+            document.addEventListener("DOMContentLoaded", async () => {
+                const injectedProps = await getInjectedProps()
+                const title = document.getElementById("ogp_title")
+                const emoji = document.getElementById("emoji")
+
+                title.innerHTML = injectedProps.title
+                emoji.innerHTML = injectedProps.emoji
+            })
+        </script>
+    </body>
+</html>
