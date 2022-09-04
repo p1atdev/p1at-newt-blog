@@ -10,6 +10,7 @@ import TOC from "../../components/TOC"
 import { useEffect, useState } from "react"
 import { Icon } from "@iconify/react"
 import OGPHead from "../../components/OGPHead"
+import { SITE_URL } from "../_app"
 // import Markdown from "../../components/Markdown"
 
 interface Props {
@@ -100,7 +101,7 @@ const Page = ({ post, html, toc }: Props) => {
 
     return (
         <PostLayout toc={toc}>
-            <OGPHead title={post.title} path={`/${post._id}`} />
+            <OGPHead title={post.title} path={`/${post._id}`} image={`${SITE_URL}/api/ogp/${post._id}`} />
 
             <div className="mx-auto px-4 sm:max-w-lg md:max-w-xl xl:max-w-2xl">
                 <div className="mb-8">
