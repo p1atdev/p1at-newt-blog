@@ -16,13 +16,13 @@ function MyApp({ Component, pageProps }: AppProps) {
         <RecoilRoot>
             <Head>
                 <link rel="icon" href="/favicon.ico" />
-                <title>{SITE_TITLE}</title>
-                <meta name="description" content={metaDescription} />
+                <title key="title">{SITE_TITLE}</title>
+                <meta name="description" content={metaDescription} key="description" />
 
-                <meta property="og:url" content={SITE_URL} />
-                <meta property="og:title" content={SITE_TITLE} />
-                <meta property="og:description" content={metaDescription} />
-                <meta property="og:image" content={`${SITE_URL}/ogp_image.png`} />
+                <meta property="og:url" content={SITE_URL} key="og:url" />
+                <meta property="og:title" content={SITE_TITLE} key="og:title" />
+                <meta property="og:description" content={metaDescription} key="og:description" />
+                <meta property="og:image" content={`${SITE_URL}/ogp_image.png`} key="og:image" />
 
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:site" content="@p1atdev" />
