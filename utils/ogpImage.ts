@@ -35,7 +35,7 @@ export const createOGPImage = async (emoji: string, text: string) => {
 
         await page.waitForNetworkIdle()
 
-        const buffer = await page.screenshot()
+        const buffer = await page.screenshot({ type: "webp", quality: 80 })
 
         await browser.close()
 
@@ -45,3 +45,36 @@ export const createOGPImage = async (emoji: string, text: string) => {
         throw error
     }
 }
+
+// export const generateOGPImage = async (id: string, emoji: string, text: string) => {
+//     try {
+//         const browser = await puppeteer.launch({
+//             headless: chromium.headless,
+//             args: chromium.args,
+//             executablePath: await chromium.executablePath,
+//         })
+//         const page = await browser.newPage()
+//         await page.setViewport({
+//             width: 1200,
+//             height: 630,
+//             deviceScaleFactor: 1,
+//         })
+
+//         const injectedProps = {
+//             emoji: emoji,
+//             title: text,
+//         }
+//         await page.exposeFunction("getInjectedProps", () => injectedProps)
+
+//         await page.goto(`${process.env.BLOG_CDN_URL}/ogp.html`)
+
+//         await page.waitForNetworkIdle()
+
+//         await page.screenshot({ path: `/public/ogp/${id}.png` })
+
+//         await browser.close()
+//     } catch (error) {
+//         console.error(error)
+//         throw error
+//     }
+// }
