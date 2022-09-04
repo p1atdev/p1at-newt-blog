@@ -1,6 +1,6 @@
 import type { NextApiRequest as Req, NextApiResponse as Res } from "next"
 import { getPost } from "../../../utils/newt"
-import { createOGPImage } from "../../../utils/ogp_image"
+import { createOGPImage } from "../../../utils/ogpImage"
 
 const handler = async (req: Req, res: Res) => {
     const contentId = req.query.id
@@ -30,6 +30,7 @@ const handler = async (req: Req, res: Res) => {
     } catch (error) {
         res.status(500).json({
             error: "Something went wrong",
+            message: error,
         })
     }
 }
