@@ -10,6 +10,7 @@ export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.p1at.de
 export const SITE_TITLE = "Plat Dev Blog"
 const metaDescription =
     "Plat のブログ。プログラミングのメモなどの技術的な記事や、いろいろなことについて書いていきます。"
+export const BLOG_CDN_URL = process.env.NEXT_PUBLIC_BLOG_CDN_URL ?? "https://blog-cdn.p1at.dev"
 
 function MyApp({ Component, pageProps }: AppProps) {
     return (

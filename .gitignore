@@ -40,3 +40,10 @@ next-env.d.ts
 
 # out
 ./out
+
+# sitemap
+robots.txt
+sitemap*.xml*
+
+# ogp
+/asset/ogp/**
