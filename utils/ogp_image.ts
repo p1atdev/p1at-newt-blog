@@ -27,8 +27,9 @@ export const createOGPImage = async (emoji: string, text: string) => {
     }
     await page.exposeFunction("getInjectedProps", () => injectedProps)
 
-    const html = await loadHTML("/ogp.html")
-    await page.setContent(html)
+    await page.goto(`${process.env.BLOG_CDN_URL}/ogp.html`)
+
+    await page.waitForNetworkIdle()
 
     const buffer = await page.screenshot()
 
