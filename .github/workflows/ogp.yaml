@@ -1,6 +1,6 @@
 on:
   repository_dispatch:
-    types: [on-demand-test]
+    types: [newt-webhook]
   pull_request:
     branches:
       - main
