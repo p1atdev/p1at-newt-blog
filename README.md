@@ -1,5 +1,7 @@
 # Plat Dev Blog
 
+[![.github/workflows/ogp.yaml](https://github.com/p1atdev/p1at-newt-blog/actions/workflows/ogp.yaml/badge.svg)](https://github.com/p1atdev/p1at-newt-blog/actions/workflows/ogp.yaml)
+
 Preview: https://p1at.dev
 
 ## Using stacks
