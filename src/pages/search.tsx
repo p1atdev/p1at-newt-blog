@@ -32,8 +32,7 @@ export const getStaticProps = async (ctx: GetStaticPathsContext) => {
 const count = 10
 
 const Page = ({ tags }: Props) => {
-    const { query, posts, page, total, search, handleChange, handleSearch, prevPage, nextPage } = useSearchPost()
-    const router = useRouter()
+    const { query, posts, page, total, handleChange, handleSearch, prevPage, nextPage } = useSearchPost()
 
     return (
         <NormalLayout tags={tags ?? []}>
