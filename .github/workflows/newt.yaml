@@ -23,6 +23,13 @@ jobs:
           deno-version: v1.x
 
       - name: Generate ogp images
+        env: 
+          NEWT_SPACE_UID: ${{ secrets.NEWT_SPACE_UID }}
+          NEWT_API_TOKEN: ${{ secrets.NEWT_API_TOKEN }}
+          NEWT_API_TYPE: ${{ secrets.NEWT_API_TYPE }}
+          NEWT_APP_UID: ${{ secrets.NEWT_APP_UID }}
+          NEWT_POST_MODEL_UID: ${{ secrets.NEWT_POST_MODEL_UID }}
+          NEWT_TAG_MODEL_UID: ${{ secrets.NEWT_TAG_MODEL_UID }}
         run: deno task ogp
         working-directory: ./deno
      
