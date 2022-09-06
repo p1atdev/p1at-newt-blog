@@ -37,12 +37,16 @@ const Page = ({ posts, tags }: Props) => {
     const limit = 10
     const total = useMemo(() => posts?.length ?? 0, [posts])
 
+    const updateQuery = (page: number) => [router.push(`/posts?page=${page}`, undefined, { shallow: true })]
+
     const prevPage = () => {
         setPage(page - 1)
+        updateQuery(page - 1)
     }
 
     const nextPage = () => {
         setPage(page + 1)
+        updateQuery(page + 1)
     }
 
     useEffect(() => {
@@ -50,10 +54,6 @@ const Page = ({ posts, tags }: Props) => {
             setPage(parseInt(router.query.page as string) || 1)
         }
     }, [router.isReady])
-
-    useEffect(() => {
-        router.push(`/posts?page=${page}`, undefined, { shallow: true })
-    }, [page])
 
     if (posts === undefined) {
         return <div>No posts found</div>
