@@ -1,13 +1,13 @@
 import Image from "next/image"
 import Link from "next/link"
 import { ReactNode } from "react"
-import SideNavBar from "../sideNavBar/SideNavBar"
-import SideNavBarDrawer from "../sideNavBar/SideNavBarDrawer"
-import SideNabBarToggle from "../sideNavBar/SideNavBarToggle"
-import TOC from "../TOC"
-import { Heading } from "../../utils/markdown"
-import { Static } from "../../utils/static"
-import Footer from "../Footer"
+import SideNavBar from "../components/sideNavBar/SideNavBar"
+import SideNavBarDrawer from "../components/sideNavBar/SideNavBarDrawer"
+import SideNabBarToggle from "../components/sideNavBar/SideNavBarToggle"
+import TOC from "../components/TOC"
+import { Heading } from "../utils/markdown"
+import { Static } from "../utils/static"
+import Footer from "../components/Footer"
 
 interface Props {
     children: ReactNode | ReactNode[]

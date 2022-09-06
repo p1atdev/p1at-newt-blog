@@ -7,7 +7,7 @@ import { getPosts, getTags } from "../../utils/newt"
 import PostList from "../../components/PostList"
 import { useRouter } from "next/router"
 import { useEffect, useState } from "react"
-import NormalLayout from "../../components/layout/NormalLayout"
+import NormalLayout from "../../layout/NormalLayout"
 
 interface Props {
     posts?: Post[]
