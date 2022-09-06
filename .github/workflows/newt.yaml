@@ -1,6 +1,11 @@
 on:
   repository_dispatch:
     types: [on-demand-test]
+  pull_request:
+    branches:
+      - main
+    types: [closed]
+  workflow_dispatch:
 
 jobs:
   update-asset:
