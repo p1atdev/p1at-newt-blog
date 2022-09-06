@@ -1,13 +1,11 @@
-import { GetStaticPropsContext, NextPageContext } from "next"
-import NextLink from "next/link"
-import Image from "next/image"
+import { GetStaticPropsContext } from "next"
 import { Post } from "../../types/posts"
 import { Tag } from "../../types/tags"
 import { getPosts, getTags } from "../../utils/newt"
 import PostList from "../../components/PostList"
 import { useRouter } from "next/router"
 import { useEffect, useState } from "react"
-import NormalLayout from "../../components/layout/NormalLayout"
+import NormalLayout from "../../layout/NormalLayout"
 
 interface Props {
     posts?: Post[]

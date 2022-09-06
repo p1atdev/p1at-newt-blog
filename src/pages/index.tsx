@@ -1,10 +1,9 @@
 import { GetStaticPropsContext } from "next"
-import Head from "next/head"
 import NextLink from "next/link"
 import PostList from "../components/PostList"
 import { Post } from "../types/posts"
 import { getPosts, getTags } from "../utils/newt"
-import NormalLayout from "../components/layout/NormalLayout"
+import NormalLayout from "../layout/NormalLayout"
 import { Tag } from "../types/tags"
 
 interface Props {

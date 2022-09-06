@@ -1,5 +1,5 @@
 import { GetStaticPathsContext } from "next"
-import NormalLayout from "../components/layout/NormalLayout"
+import NormalLayout from "../layout/NormalLayout"
 import { Tag } from "../types/tags"
 import { getTags } from "../utils/newt"
 
