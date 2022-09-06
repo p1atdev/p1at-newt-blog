@@ -10,6 +10,12 @@ if (!posts) {
     throw new Error("No posts found")
 }
 
+try {
+    Deno.statSync("../asset/ogp")
+} catch {
+    Deno.mkdirSync("../asset/ogp") // なかったら作る
+}
+
 await Promise.all(
     posts.map(async (post) => {
         const image = await generateOGPImage(post.emoji.value, post.title)
