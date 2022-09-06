@@ -30,7 +30,9 @@ jobs:
           NEWT_APP_UID: ${{ secrets.NEWT_APP_UID }}
           NEWT_POST_MODEL_UID: ${{ secrets.NEWT_POST_MODEL_UID }}
           NEWT_TAG_MODEL_UID: ${{ secrets.NEWT_TAG_MODEL_UID }}
-        run: deno task ogp
+        run: |
+          deno task setup:chrome
+          deno task ogp
         working-directory: ./deno
      
       - name: Publish to Cloudflare Pages
