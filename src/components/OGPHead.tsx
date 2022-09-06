@@ -11,9 +11,7 @@ interface Props {
 const OGPHead = ({ title, path, description, image }: Props) => {
     return (
         <Head>
-            <title>
-                {title} | {SITE_TITLE}
-            </title>
+            <title>{`${title} | ${SITE_TITLE}`}</title>
             <meta property="og:title" content={`${title} | ${SITE_TITLE}`} key="og:title" />
 
             {image && (
