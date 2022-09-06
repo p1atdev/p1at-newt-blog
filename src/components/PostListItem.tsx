@@ -9,7 +9,7 @@ interface Props {
 
 const PostListItem = ({ post }: Props) => {
     return (
-        <div className="flex rounded-md border border-gray-100 p-2 hover:shadow-sm">
+        <div className="flex rounded-md border border-gray-100 p-2 hover:border-gray-200 hover:shadow-sm">
             <div className="mx-2 w-16 p-4">
                 <div className="m-auto text-3xl">{post.emoji.value}</div>
             </div>

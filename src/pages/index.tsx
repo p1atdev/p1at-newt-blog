@@ -40,13 +40,17 @@ const Index = ({ posts, tags }: Props) => {
         <NormalLayout tags={tags ?? []}>
             <div className="mb-1">
                 <h2 className=" text-2xl font-semibold">最新記事</h2>
-                <div className="flex justify-end">
-                    <NextLink href={"/posts"}>
-                        <a className="font-medium text-blue-400 hover:underline">全ての記事→</a>
-                    </NextLink>
-                </div>
             </div>
+
             <PostList posts={posts.slice(0, 5)} />
+
+            <div className="my-2">
+                <NextLink href={"/posts"} passHref>
+                    <button className="w-full rounded-md border border-blue-200 p-2 text-blue-400 hover:bg-blue-100 hover:bg-opacity-10 hover:shadow-sm">
+                        <div className="w-full">全ての記事を見る</div>
+                    </button>
+                </NextLink>
+            </div>
         </NormalLayout>
     )
 }
