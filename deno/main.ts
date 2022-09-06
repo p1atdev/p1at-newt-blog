@@ -22,6 +22,6 @@ await Promise.all(
             throw new Error("Image is not a buffer")
         }
 
-        await Deno.writeFile(`../asset/ogp/${post._id}.webp`, image)
+        await Deno.writeFile(`../asset/ogp/${post._id}.webp`, image, { create: true })
     })
 )
