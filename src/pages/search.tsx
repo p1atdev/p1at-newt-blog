@@ -1,7 +1,6 @@
 import { Icon } from "@iconify/react"
 import { GetStaticPathsContext } from "next"
 import { useRouter } from "next/router"
-import { useEffect, useRef, useState } from "react"
 import NormalLayout from "../layout/NormalLayout"
 import PostList from "../components/PostList"
 import { useSearchPost } from "../hooks/useSearchPost"

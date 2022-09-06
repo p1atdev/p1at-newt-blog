@@ -1,6 +1,4 @@
-import { GetStaticPropsContext, NextPageContext } from "next"
-import NextLink from "next/link"
-import Image from "next/image"
+import { GetStaticPropsContext } from "next"
 import { Post } from "../../types/posts"
 import { Tag } from "../../types/tags"
 import { getPosts, getTags } from "../../utils/newt"
