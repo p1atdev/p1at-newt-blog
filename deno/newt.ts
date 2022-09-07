@@ -1,5 +1,5 @@
 import { NewtClient } from "./client.ts"
-import { Post, Posts } from "../types/posts.ts"
+import { Post, Posts } from "../src/types/posts.ts"
 
 interface ClientSecrets {
     NEWT_SPACE_UID: string

@@ -1,0 +1,27 @@
+on:
+  pull_request:
+    types: [opened, reopened, edited]
+  push:
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      deployments: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup deno
+        uses: denoland/setup-deno@v1
+        with:
+          deno-version: v1.x
+
+      - name: Lint deno
+        run: deno task lint
+        working-directory: ./deno
+
+      - name: Lint next.js
+        run: |
+          yarn
+          yarn lint
