@@ -70,7 +70,7 @@ const NormalLayout = ({ children, tags }: Props) => {
                         </div>
                         <div className="">
                             <p className="py-2 text-2xl font-semibold">タグ一覧</p>
-                            <TagList tags={tags} />
+                            <TagList tags={tags} clickcable={true} />
                         </div>
                         <div>
                             <p className="py-2 text-2xl font-semibold">ガーデニング</p>
