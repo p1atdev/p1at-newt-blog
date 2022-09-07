@@ -21,4 +21,6 @@ jobs:
         working-directory: ./deno
 
       - name: Lint next.js
-        run: yarn lint
+        run: |
+          yarn
+          yarn lint
