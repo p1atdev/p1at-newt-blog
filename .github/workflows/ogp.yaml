@@ -1,6 +1,12 @@
 on:
   repository_dispatch:
     types: [newt-webhook]
+  pull_request:
+    types:
+      - closed
+    paths:
+      - "/asset"
+      - "/deno"
   workflow_dispatch:
 
 jobs:
