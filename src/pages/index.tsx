@@ -39,7 +39,7 @@ const Index = ({ posts, tags }: Props) => {
     return (
         <NormalLayout tags={tags ?? []}>
             <div className="mb-1">
-                <h2 className=" text-2xl font-semibold">最新記事</h2>
+                <h2 className="text-2xl font-semibold">最新記事</h2>
             </div>
 
             <PostList posts={posts.slice(0, 5)} />

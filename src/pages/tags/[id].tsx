@@ -1,4 +1,6 @@
 import { GetStaticPathsResult, GetStaticPropsContext } from "next"
+import PostList from "../../components/PostList"
+import TagBadge from "../../components/Tag"
 import NormalLayout from "../../layout/NormalLayout"
 import { Post } from "../../types/posts"
 import { Tag } from "../../types/tags"
@@ -101,7 +103,26 @@ export const getStaticPaths = async (): Promise<GetStaticPathsResult> => {
 }
 
 const Page = ({ tags, tag, posts }: Props) => {
-    return <NormalLayout tags={tags}>tag: {tag._id}</NormalLayout>
+    return (
+        <NormalLayout tags={tags}>
+            <div>
+                <div>
+                    <p className="my-2 text-2xl font-semibold">タグ</p>
+                </div>
+
+                <p className="flex gap-x-1">
+                    <span>
+                        <TagBadge {...tag} />
+                    </span>
+                    が含まれた記事一覧
+                </p>
+
+                <div className="my-4">
+                    <PostList posts={posts} />
+                </div>
+            </div>
+        </NormalLayout>
+    )
 }
 
 export default Page

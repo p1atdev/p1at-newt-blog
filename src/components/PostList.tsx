@@ -1,8 +1,6 @@
 import NextLink from "next/link"
 import PostListItem from "./PostListItem"
 import { Post } from "../types/posts"
-import { format } from "date-fns"
-import { useRouter } from "next/router"
 
 interface Props {
     posts: Post[]
@@ -13,7 +11,7 @@ const PostList = ({ posts }: Props) => {
         return (
             <div>
                 <p className="text-gray-400">記事が見つかりませんでした</p>
-                <div className="my-8 bg-black p-4 font-mono text-white">
+                {/* <div className="my-8 bg-black p-4 font-mono text-white">
                     <p className=" my-2 text-2xl font-medium">IndexError: page out of range</p>
                     <div className="my-4">
                         <p>Datetime: {format(new Date(), "yyyy-MM-dd E H:mm:ss XXXXX")}</p>
@@ -35,7 +33,7 @@ const PostList = ({ posts }: Props) => {
                     <div className="my-4">
                         <p>Version: 0.1.0</p>
                     </div>
-                </div>
+                </div> */}
             </div>
         )
     }
