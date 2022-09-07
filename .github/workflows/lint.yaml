@@ -1,6 +1,5 @@
+name: lint
 on:
-  pull_request:
-    types: [opened, reopened, edited]
   push:
 jobs:
   lint:

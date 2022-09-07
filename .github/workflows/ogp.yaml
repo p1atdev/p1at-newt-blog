@@ -1,3 +1,4 @@
+name: ogp-image-generation
 on:
   repository_dispatch:
     types: [newt-webhook]
