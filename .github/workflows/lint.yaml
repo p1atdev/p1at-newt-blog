@@ -1,6 +1,7 @@
 on:
   pull_request:
-    types: [opened, reopened, edited, ]
+    types: [opened, reopened, edited]
+  push:
 jobs:
   lint:
     runs-on: ubuntu-latest
