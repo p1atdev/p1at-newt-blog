@@ -47,6 +47,10 @@
         @apply ml-6 list-inside list-disc;
         li {
             @apply my-3;
+
+            a {
+                @apply text-blue-400 hover:underline;
+            }
         }
     }
 
