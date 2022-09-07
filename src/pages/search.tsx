@@ -32,8 +32,7 @@ export const getStaticProps = async (ctx: GetStaticPathsContext) => {
 const count = 10
 
 const Page = ({ tags }: Props) => {
-    const { query, posts, page, total, search, handleChange, handleSearch, prevPage, nextPage } = useSearchPost()
-    const router = useRouter()
+    const { query, posts, page, total, handleChange, handleSearch, prevPage, nextPage } = useSearchPost()
 
     return (
         <NormalLayout tags={tags ?? []}>
@@ -60,7 +59,8 @@ const Page = ({ tags }: Props) => {
             {posts.length > 0 && (
                 <div>
                     <PostList posts={posts} />
-                    <div className="flex justify-evenly gap-x-2 text-xl font-bold text-blue-500">
+
+                    <div className="my-4 flex justify-evenly gap-x-2 text-xl font-bold text-blue-500">
                         <button
                             onClick={prevPage}
                             className="h-9 w-9 rounded border p-2 shadow-sm hover:shadow-md disabled:text-gray-500 disabled:shadow-none disabled:hover:shadow-none"
@@ -76,6 +76,10 @@ const Page = ({ tags }: Props) => {
                         >
                             <Icon icon="charm:chevron-right" className="m-auto" />
                         </button>
+                    </div>
+
+                    <div>
+                        <p className="text-center">{page} ページ目</p>
                     </div>
                 </div>
             )}

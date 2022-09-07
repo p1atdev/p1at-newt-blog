@@ -111,7 +111,7 @@ const Page = ({ post, html, toc }: Props) => {
                         <CreatedAt date={post._sys.createdAt} />
                         <UpdatedAt date={post._sys.raw.publishedAt} />
                     </div>
-                    <TagList tags={post.tags} />
+                    <TagList tags={post.tags} clickcable={true} />
                 </div>
 
                 <div className="lg:hidden">

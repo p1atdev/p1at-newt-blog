@@ -4,8 +4,9 @@ import { Tag } from "../../types/tags"
 import { getPosts, getTags } from "../../utils/newt"
 import PostList from "../../components/PostList"
 import { useRouter } from "next/router"
-import { useEffect, useState } from "react"
+import { useEffect, useMemo, useState } from "react"
 import NormalLayout from "../../layout/NormalLayout"
+import { Icon } from "@iconify/react"
 
 interface Props {
     posts?: Post[]
@@ -34,12 +35,25 @@ const Page = ({ posts, tags }: Props) => {
     const router = useRouter()
     const [page, setPage] = useState<number>(1)
     const limit = 10
+    const total = useMemo(() => posts?.length ?? 0, [posts])
+
+    const updateQuery = (page: number) => [router.push(`/posts?page=${page}`, undefined, { shallow: true })]
+
+    const prevPage = () => {
+        setPage(page - 1)
+        updateQuery(page - 1)
+    }
+
+    const nextPage = () => {
+        setPage(page + 1)
+        updateQuery(page + 1)
+    }
 
     useEffect(() => {
         if (router.isReady) {
             setPage(parseInt(router.query.page as string) || 1)
         }
-    }, [router])
+    }, [router.isReady])
 
     if (posts === undefined) {
         return <div>No posts found</div>
@@ -48,11 +62,34 @@ const Page = ({ posts, tags }: Props) => {
     return (
         <NormalLayout tags={tags ?? []}>
             <p className="mb-6 text-2xl font-bold">記事一覧</p>
+
             <PostList posts={posts.slice((page - 1) * limit, page * limit)} />
-            {/* TODO: ここのページングを作る */}
-            <div className="mt-8">
-                <p>ページ: {page}</p>
-            </div>
+
+            {posts.length > 0 && (
+                <div className="my-4">
+                    <div className="flex justify-evenly gap-x-2 text-xl font-bold text-blue-500">
+                        <button
+                            onClick={prevPage}
+                            className="h-9 w-9 rounded border p-2 shadow-sm hover:shadow-md disabled:text-gray-500 disabled:shadow-none disabled:hover:shadow-none"
+                            disabled={page === 1}
+                        >
+                            <Icon icon="charm:chevron-left" className="m-auto" />
+                        </button>
+
+                        <button
+                            onClick={nextPage}
+                            className="h-9 w-9 rounded border p-2 shadow-sm hover:shadow-md disabled:text-gray-500 disabled:shadow-none disabled:hover:shadow-none"
+                            disabled={total <= page * limit}
+                        >
+                            <Icon icon="charm:chevron-right" className="m-auto" />
+                        </button>
+                    </div>
+
+                    <div>
+                        <p className="text-center">{page} ページ目</p>
+                    </div>
+                </div>
+            )}
         </NormalLayout>
     )
 }
