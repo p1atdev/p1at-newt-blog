@@ -5,6 +5,7 @@ import "../styles/linkCard.scss"
 import type { AppProps } from "next/app"
 import { RecoilRoot } from "recoil"
 import Head from "next/head"
+import { GoogleAnalytics } from "nextjs-google-analytics"
 
 export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.p1at.dev"
 export const SITE_TITLE = "Plat Dev Blog"
@@ -29,6 +30,7 @@ function MyApp({ Component, pageProps }: AppProps) {
                 <meta name="twitter:site" content="@p1atdev" />
                 <meta name="twitter:creator" content="@p1atdev" />
             </Head>
+            <GoogleAnalytics trackPageViews />
             <Component {...pageProps} />
         </RecoilRoot>
     )
