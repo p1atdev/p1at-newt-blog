@@ -8,6 +8,7 @@ import TOC from "../components/TOC"
 import { Heading } from "../utils/markdown"
 import { Static } from "../utils/static"
 import Footer from "../components/Footer"
+import Script from "next/script"
 
 interface Props {
     children: ReactNode | ReactNode[]
@@ -17,6 +18,8 @@ interface Props {
 const PostLayout = ({ children, toc }: Props) => {
     return (
         <div className="h-screen w-screen">
+            <Script id="twitter-widget" async src="https://platform.twitter.com/widgets.js" />
+
             <div className="flex h-full w-full flex-col divide-x md:flex-row">
                 {/* サイドバー */}
                 <div className="hidden shrink-0 basis-1/4 md:block lg:basis-1/5">
