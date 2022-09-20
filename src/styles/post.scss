@@ -79,7 +79,7 @@
         }
     }
 
-    blockquote {
+    blockquote:not(.twitter-tweet) {
         @apply my-6 rounded border-l-4 border-slate-300 bg-slate-50 pl-4 text-slate-800;
         p {
             @apply py-3;
