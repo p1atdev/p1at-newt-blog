@@ -38,6 +38,7 @@ const Page = ({ tags }: Props) => {
                 </ul>
             </div>
             <h2 className="mt-6 mb-3 text-xl font-semibold">好きなこと</h2>
+            最近は画像生成AIに時間を取られてゲームができない...
             <div className="mb-4">
                 <ul className=" list-inside list-disc">
                     <li>ゲーム</li>
@@ -45,39 +46,19 @@ const Page = ({ tags }: Props) => {
                     <li>アニメ・漫画</li>
                 </ul>
             </div>
-            <h2 className="mt-6 mb-3 text-xl font-semibold">ゲーム</h2>
-            <div className="mb-4">
-                <ul className=" list-inside list-disc">
-                    <li>アークナイツ (これのために生きている)</li>
-                </ul>
+            <div>
+                <iframe
+                    style={{
+                        borderRadius: "12px",
+                    }}
+                    src="https://open.spotify.com/embed/track/2p01X0kABsYx2pNwzeZtzn?utm_source=generator"
+                    width="100%"
+                    height="152"
+                    allowFullScreen={false}
+                    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                    loading="lazy"
+                ></iframe>
             </div>
-            <h2 className="mt-6 mb-3 text-xl font-semibold">好きな言語</h2>
-            <div className="mb-4">
-                <ul className=" list-inside list-disc">
-                    <li>TypeScript (Webと相性が良くて離れられない)</li>
-                    <li>Swift (素晴らしい言語なのに、たまにちょっと残念なとこがあって悲しい)</li>
-                    <li>Go (書けないけど、低レイヤー通信書く時にめちゃくちゃ便利だったので好き)</li>
-                </ul>
-            </div>
-            <h2 className="mt-6 mb-3 text-xl font-semibold">アニメ・漫画</h2>
-            <div className="mb-4">
-                <ul className=" list-inside list-disc">
-                    <li>ダンジョン飯 (唯一全巻所有していて今も追っている作品。アニメ放送待ち遠しい)</li>
-                    <li>NEW GAME! (前はアマプラで見れたのに見れなくなってしまった...悲しい)</li>
-                    <li>映像研には手を出すな! (アニメ制作がテーマのアニメ。面白い)</li>
-                    <li>桜Trick (最高の百合)</li>
-                </ul>
-            </div>
-            <h2 className="mt-6 mb-3 text-xl font-semibold">好きな音楽</h2>
-            <iframe
-                className="w-full rounded-md md:w-2/3"
-                src="https://open.spotify.com/embed/track/6tUryMdp3vjONBvMX5IrnU?utm_source=generator"
-                height="80"
-                frameBorder="0"
-                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                allowFullScreen={true}
-            ></iframe>
-            夏じゃなくても聴いてる。
         </NormalLayout>
     )
 }
