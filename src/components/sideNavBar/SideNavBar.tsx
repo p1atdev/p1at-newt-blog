@@ -94,7 +94,7 @@ const SideNavBar = () => {
                     </Link>
                 </div>
                 <h1 className="text-center text-3xl font-bold">Plat Dev</h1>
-                <p className="my-2 text-center text-gray-400">Newt 使ったブログ</p>
+                <p className="my-2 text-center text-gray-400">ほぼメモ用のブログ</p>
             </div>
 
             <div>
@@ -106,7 +106,7 @@ const SideNavBar = () => {
             </div>
 
             <div>
-                <p className="py-2 px-6 text-sm text-gray-500">リアルの世界は明日も僕抜きで機能して回る〜♪</p>
+                <p className="py-2 px-6 text-sm text-gray-500">特に何も NAI</p>
             </div>
 
             <div className="mt-auto mb-10 flex flex-col divide-y divide-blue-100">
